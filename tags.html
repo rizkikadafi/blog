@@ -1,0 +1,89 @@
+---
+layout: blog
+permalink: /blog/tags
+title: tags
+---
+
+<div class="content">
+  <div class="px-8 sm:px-0">
+    <div id="tags-btn"
+      class="flex flex-wrap mt-20 mx-auto bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-3 rounded-md shadow-custom">
+
+      {% for tag in site.tags %}
+      <span class=" cursor-pointer inline-block mr-2 my-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3
+      py-[2px] text-slate-200" data-tag="{{ tag[0] }}">
+        {{ tag[0] | capitalize }}
+      </span>
+
+      {% endfor %}
+
+    </div>
+
+    <div id="tags" class="w-full dark:text-white">
+      {% for tag in site.tags %}
+      <section id="{{tag[0]}}" class="hidden flex-col justify-center items-center mt-5">
+        <div class="text-center mb-5">
+          <h1
+            class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-black after:dark:bg-white">
+            {{tag[0] | capitalize}}
+          </h1>
+          <p class="w-3/5">{{page.desc}}</p>
+        </div>
+
+        <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+          {% assign tags_per_column_mod = tag[1] | size | modulo: 3 %}
+          {% assign tags_per_column = tag[1] | size | minus: categories_per_column_mod | divided_by: 3 %}
+
+          {% if tag[1].size <= 3 %} 
+            <div class="flex flex-col gap-4">
+              {% for post in tag[1] limit: 1 %}
+                {% include blog-post-card.html post=post %}
+              {% endfor %}
+            </div>
+            {% for i in (2..tag[1].size) %} 
+              <div class="flex flex-col gap-4">
+                {% for post in tag[1] limit: 1 offset: continue %}
+                  {% include blog-post-card.html post=post %}
+                {% endfor %}
+              </div>
+            {% endfor %}
+
+          {% else %}
+              <div class="flex flex-col gap-4">
+                {% for post in tag[1] limit: tags_per_column %}
+                  {% include blog-post-card.html post=post %}
+                {% endfor %}
+
+                {% if 1 <= tags_per_column_mod %}
+                  {% for post in tag[1] limit: 1 offset: continue %}
+                    {% include blog-post-card.html post=post %}
+                  {% endfor %}
+                {% endif %}
+              </div>
+
+            {% for j in (2..3) %}
+
+              <div class="flex flex-col gap-4">
+                {% for post in tag[1] limit: tags_per_column offset: continue %}
+                  {% include blog-post-card.html post=post %}
+                {% endfor %}
+
+                {% if j <= tags_per_column_mod %}
+                  {% for post in tag[1] limit: 1 offset: continue %}
+                    {% include blog-post-card.html post=post %}
+                  {% endfor %}
+                {% endif %}
+              </div>
+
+            {% endfor %}
+          {% endif %}
+
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/tag.js"></script>
