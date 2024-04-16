@@ -8,7 +8,7 @@ social:
   links:
     - https://www.linkedin.com/in/rizkikadafi 
     - https://github.com/rizkikadafi
-baseurl: ""
+baseurl: "/blog"
 url: ""
 defaults:
   - scope:
