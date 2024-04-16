@@ -1,6 +1,6 @@
 ---
 layout: blog
-permalink: /blog/categories
+permalink: /categories
 title: categories
 ---
 
@@ -36,51 +36,42 @@ title: categories
           {% assign categories_per_column_mod = category[1] | size | modulo: 3 %}
           {% assign categories_per_column = category[1] | size | minus: categories_per_column_mod | divided_by: 3 %}
 
-          {% if category[1].size <= 3 %} 
-            <div class="flex flex-col gap-4">
-              {% for post in category[1] limit: 1 %}
-                {% include blog-post-card.html post=post %}
-              {% endfor %}
-            </div>
-            {% for i in (2..category[1].size) %} 
-              <div class="flex flex-col gap-4">
-                {% for post in category[1] limit: 1 offset: continue %}
-                  {% include blog-post-card.html post=post %}
-                {% endfor %}
-              </div>
+          {% if category[1].size <= 3 %} <div class="flex flex-col gap-4">
+            {% for post in category[1] limit: 1 %}
+            {% include blog-post-card.html post=post %}
             {% endfor %}
+        </div>
+        {% for i in (2..category[1].size) %}
+        <div class="flex flex-col gap-4">
+          {% for post in category[1] limit: 1 offset: continue %}
+          {% include blog-post-card.html post=post %}
+          {% endfor %}
+        </div>
+        {% endfor %}
 
-          {% else %}
-              <div class="flex flex-col gap-4">
-                {% for post in category[1] limit: categories_per_column %}
-                  {% include blog-post-card.html post=post %}
-                {% endfor %}
+        {% else %}
+        <div class="flex flex-col gap-4">
+          {% for post in category[1] limit: categories_per_column %}
+          {% include blog-post-card.html post=post %}
+          {% endfor %}
 
-                {% if 1 <= categories_per_column_mod %}
-                  {% for post in category[1] limit: 1 offset: continue %}
-                    {% include blog-post-card.html post=post %}
-                  {% endfor %}
-                {% endif %}
-              </div>
+          {% if 1 <= categories_per_column_mod %} {% for post in category[1] limit: 1 offset: continue %} {% include
+            blog-post-card.html post=post %} {% endfor %} {% endif %} </div>
 
             {% for j in (2..3) %}
 
-              <div class="flex flex-col gap-4">
-                {% for post in category[1] limit: categories_per_column offset: continue %}
-                  {% include blog-post-card.html post=post %}
+            <div class="flex flex-col gap-4">
+              {% for post in category[1] limit: categories_per_column offset: continue %}
+              {% include blog-post-card.html post=post %}
+              {% endfor %}
+
+              {% if j <= categories_per_column_mod %} {% for post in category[1] limit: 1 offset: continue %} {% include
+                blog-post-card.html post=post %} {% endfor %} {% endif %} </div>
+
                 {% endfor %}
-
-                {% if j <= categories_per_column_mod %}
-                  {% for post in category[1] limit: 1 offset: continue %}
-                    {% include blog-post-card.html post=post %}
-                  {% endfor %}
                 {% endif %}
-              </div>
 
-            {% endfor %}
-          {% endif %}
-
-        </div>
+            </div>
       </section>
       {% endfor %}
     </div>
