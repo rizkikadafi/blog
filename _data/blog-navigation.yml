@@ -1,9 +1,9 @@
 - name: Dashboard
-  link: "/blog"
+  link: "/"
 - name: Categories
-  link: "/blog/categories"
+  link: "/categories"
 - name: Recent Post
-  link: "/blog/#recent"
+  link: "/#recent"
 - name: Archives
-  link: /blog/archives
+  link: /archives
 

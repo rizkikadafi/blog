@@ -8,14 +8,14 @@ social:
   links:
     - https://www.linkedin.com/in/rizkikadafi 
     - https://github.com/rizkikadafi
-baseurl: "/blog"
+baseurl: ""
 url: ""
 defaults:
   - scope:
       path: ''
       type: posts
     values:
-      permalink: blog/:title
+      permalink: /:title
 
 postcss:
   cache: false
