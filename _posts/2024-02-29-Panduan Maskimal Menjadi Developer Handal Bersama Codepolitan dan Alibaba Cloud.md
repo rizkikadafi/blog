@@ -5,7 +5,7 @@ thumbnail: /assets/image/blog-assets/general/kode-bisat.png
 tags: beasiswa codepolitan alibaba kodebisat
 categories: general
 title: kodebisat by codepolitan
-permalink: /blog/kodebisat-codepolitan
+permalink: /:categories/kodebisat-codepolitan
 excerpt_separator: <!--more-->
 ---
 

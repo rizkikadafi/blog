@@ -26,11 +26,11 @@
 
     </div>
     <div class=" flex justify-between items-center h-full">
-      <a href="{{site.baseurl}}/blog" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
+      <a href="{{site.baseurl}}" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
       <div class="flex">
         <ul class="hidden sm:flex *:mx-5">
           {% for item in site.data.blog-navigation %}
-          <li class="hover:underline hover:underline-offset-4"><a href="{{item.link}}">{{item.name}}</a></li>
+            <li class="hover:underline hover:underline-offset-4"><a href="{{site.baseurl}}/{{item.link}}">{{item.name}}</a></li>
           {% endfor %}
         </ul>
         <div class="*:cursor-pointer">
