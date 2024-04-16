@@ -6,7 +6,7 @@
         <ul>
           {% for item in site.data.blog-navigation %}
           <li>
-            <a data-modal-hide="default-modal" href="{{item.link}}" class="block py-3 rounded-md">{{item.name}}</a>
+            <a data-modal-hide="default-modal" href="{{site.baseurl}}/{{item.link}}" class="block py-3 rounded-md">{{item.name}}</a>
           </li>
           {% endfor %}
         </ul>

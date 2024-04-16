@@ -10,8 +10,8 @@
     integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/main.css" />
-  <link rel="shortcut icon" type="image/png" href="/assets/image/favicon.png">
+  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css" />
+  <link rel="shortcut icon" type="image/png" href="{{site.baseurl}}/assets/image/favicon.png">
 
   <title>{{page.title}}</title>
 
@@ -26,11 +26,11 @@
 
     </div>
     <div class=" flex justify-between items-center h-full">
-      <a href="{{site.baseurl}}/blog" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
+      <a href="{{site.baseurl}}" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
       <div class="flex">
         <ul class="hidden sm:flex *:mx-5">
           {% for item in site.data.blog-navigation %}
-          <li class="hover:underline hover:underline-offset-4"><a href="{{item.link}}">{{item.name}}</a></li>
+          <li class="hover:underline hover:underline-offset-4"><a href="{{site.baseurl}}/{{item.link}}">{{item.name}}</a></li>
           {% endfor %}
         </ul>
         <div class="*:cursor-pointer"> <i id="dark-mode" class="bi bi-moon-stars-fill mr-2 text-lg dark:hidden"></i>
@@ -51,8 +51,8 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-  <script src="/assets/js/toggle_dark.js"></script>
-  <script src="/assets/js/blog-navbar.js"></script>
+  <script src="{{site.baseurl}}/assets/js/toggle_dark.js"></script>
+  <script src="{{site.baseurl}}/assets/js/blog-navbar.js"></script>
 </body>
 
 </html>
