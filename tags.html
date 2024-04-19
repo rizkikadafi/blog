@@ -84,6 +84,27 @@ title: Tags
       {% endfor %}
     </div>
   </div>
+
+  <section id="contact" class="mt-20">
+    {% include header-title.html title='Contact Me' subtitle="Let's connect with me" %}
+
+    <div class="mb-5 box-border text-white">
+      <div
+        class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom">
+        <div
+          class="flex *:mx-2 justify-center text-center mb-3 py-3 border-b-slate-600 border-b-2 text-slate-800 dark:text-white">
+          {% for item in site.data.contact %}
+
+          {% include contact.html name=item.name link=item.link icon=item.icon %}
+
+          {% endfor %}
+        </div>
+        <div class="text-xs lg:text-sm text-center text-slate-800 dark:text-white">
+          <p><i class="bi bi-c-circle"></i> 2024 Muhamad Rizki Kadafi. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <script src="{{site.baseurl}}/assets/js/tag.js"></script>

@@ -2,8 +2,8 @@
 layout: post
 author: Kadafi
 thumbnail: /assets/image/hero1.jpg
-tags: react javascript
-categories: programming web
+tags: draft
+categories: sofware-development
 ---
 
 A banana is an edible fruit – botanically a berry – produced by several
@@ -14,3 +14,6 @@ distinguishing them from dessert bananas. The fruit is variable in size,
 color, and firmness, but is usually elongated and curved, with soft
 flesh rich in starch covered with a rind, which may be green, yellow,
 red, purple, or brown when ripe.
+
+| A | B | C |
+| rizki | kadafi | John |

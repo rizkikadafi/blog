@@ -13,7 +13,10 @@ title: Categories
 
       <span class=" cursor-pointer inline-block mr-2 my-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3
       py-[2px] text-slate-200" data-category="{{ category[0] }}">
-        {{ category[0] | capitalize }}
+        {% assign words = category[0] | split: "-" %}
+        {% for word in words %}
+          {{ word | capitalize }}
+        {% endfor %}
       </span>
 
       {% endfor %}
@@ -26,7 +29,10 @@ title: Categories
         <div class="text-center mb-5">
           <h1
             class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-black after:dark:bg-white">
-            {{category[0] | capitalize}}
+            {% assign words = category[0] | split: "-" %}
+            {% for word in words %}
+            {{ word | capitalize }}
+            {% endfor %}
           </h1>
           <p class="w-3/5">{{page.desc}}</p>
         </div>
@@ -76,6 +82,27 @@ title: Categories
       {% endfor %}
     </div>
   </div>
+
+  <section id="contact" class="mt-20">
+    {% include header-title.html title='Contact Me' subtitle="Let's connect with me" %}
+
+    <div class="mb-5 box-border text-white">
+      <div
+        class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom">
+        <div
+          class="flex *:mx-2 justify-center text-center mb-3 py-3 border-b-slate-600 border-b-2 text-slate-800 dark:text-white">
+          {% for item in site.data.contact %}
+
+          {% include contact.html name=item.name link=item.link icon=item.icon %}
+
+          {% endfor %}
+        </div>
+        <div class="text-xs lg:text-sm text-center text-slate-800 dark:text-white">
+          <p><i class="bi bi-c-circle"></i> 2024 Muhamad Rizki Kadafi. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <script src="{{site.baseurl}}/assets/js/category.js"></script>
