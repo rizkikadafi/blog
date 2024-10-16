@@ -44,11 +44,15 @@
         <ul>
           
           <li>
-            <a data-modal-hide="default-modal" href="/blog/" class="block py-3 rounded-md">Dashboard</a>
+            <a data-modal-hide="default-modal" href="/blog/#dashboard" class="block py-3 rounded-md">Dashboard</a>
           </li>
           
           <li>
             <a data-modal-hide="default-modal" href="/blog/categories" class="block py-3 rounded-md">Categories</a>
+          </li>
+          
+          <li>
+            <a data-modal-hide="default-modal" href="/blog/tags" class="block py-3 rounded-md">Tags</a>
           </li>
           
           <li>
@@ -72,17 +76,24 @@
 
     </div>
     <div class=" flex justify-between items-center h-full">
-      <a href="/blog" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
+      <a href="/blog/" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
       <div class="flex">
         <ul class="hidden sm:flex *:mx-5">
           
-            <li class="hover:underline hover:underline-offset-4"><a href="/blog/">Dashboard</a></li>
+          <li class="hover:underline hover:underline-offset-4"><a
+              href="/blog/#dashboard">Dashboard</a></li>
           
-            <li class="hover:underline hover:underline-offset-4"><a href="/blog/categories">Categories</a></li>
+          <li class="hover:underline hover:underline-offset-4"><a
+              href="/blog/categories">Categories</a></li>
           
-            <li class="hover:underline hover:underline-offset-4"><a href="/blog/#recent">Recent Post</a></li>
+          <li class="hover:underline hover:underline-offset-4"><a
+              href="/blog/tags">Tags</a></li>
           
-            <li class="hover:underline hover:underline-offset-4"><a href="/blog/archives">Archives</a></li>
+          <li class="hover:underline hover:underline-offset-4"><a
+              href="/blog/#recent">Recent Post</a></li>
+          
+          <li class="hover:underline hover:underline-offset-4"><a
+              href="/blog/archives">Archives</a></li>
           
         </ul>
         <div class="*:cursor-pointer">
@@ -99,26 +110,19 @@
     <i class="bi bi-arrow-up-circle dark:text-white text-4xl"></i>
   </div>
 
-  <div class="p-4 sm:px-10 lg:px-20 lg:mt-20 mt-12 text-white">
-  
-  <div class="w-full mb-5 h-60 sm:h-72 md:h-80 lg:h-96 bg-cover bg-center rounded-md shadow-custom relative"
-    style="background-image: url('/blog/assets/image/blog-assets/general/kode-bisat.png')">
-    <div
-      class="top-0 left-0 bg-gradient-to-t from-black h-full w-full flex flex-col justify-end rounded-md p-5 backdrop-brightness-75 absolute">
-      <div>
-        <div class="flex flex-col">
-          <span class="text-base sm:text-xl font-bold">Kadafi </span>
-          <span class="text-sm sm:text-lg">29 Feb 2024</span>
-        </div>
+  <div class="p-4 px-6 sm:px-32 lg:mt-20 mt-10 text-white">
+
+  <div class="prose prose-sm sm:prose-base dark:prose-invert prose-h1:mb-2 prose-h1:text-3xl sm:prose-h1:text-5xl prose-figure:w-2/3 
+    prose-figure:mx-auto prose-img:rounded-md prose-img:object-cover prose-img:object-center max-w-none px-2 md:px-0 text-slate-800 
+    dark:text-white mt-5">
+    <h1>kodebisat by codepolitan</h1>
+    <div class="text-slate-800 dark:text-white">
+      <div class="ml-1 sm:ml-0">
+        <span class="text-sm sm:text-base">Kadafi - 29 Feb 2024</span>
       </div>
     </div>
-  </div>
-  
 
-  <div
-    class="prose prose-sm sm:prose-base dark:prose-invert prose-h1:mb-2 prose-h1:text-2xl sm:prose-h1:text-3xl max-w-none px-2 md:px-0 text-slate-800 dark:text-white mt-5">
-    <h1>kodebisat by codepolitan</h1>
-    <div class="not-prose">
+    <div class="not-prose my-3">
       
       <a href="/blog/tags?tag=beasiswa"
         class="inline-block mr-2 my-1 w-fit text-sm bg-slate-500/70 backdrop-blur-md rounded-xl px-4 py-[2px] dark:text-slate-200">beasiswa</a>
@@ -133,6 +137,24 @@
         class="inline-block mr-2 my-1 w-fit text-sm bg-slate-500/70 backdrop-blur-md rounded-xl px-4 py-[2px] dark:text-slate-200">kodebisat</a>
       
     </div>
+
+    
+    <img src="/blog/assets/image/blog-assets/general/kode-bisat.png" alt="/assets/image/blog-assets/general/kode-bisat.png"
+      class="not-prose rounded-md object-cover object-center h-52 sm:h-80 w-full cursor-zoom-in"
+      data-modal-target="thumbnail-modal" data-modal-toggle="thumbnail-modal">
+
+    <div id="thumbnail-modal" tabindex="-1" aria-hidden="true"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <div class="relative p-4 w-full max-w-5xl max-h-full">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <img src="/blog/assets/image/blog-assets/general/kode-bisat.png" alt="/assets/image/blog-assets/general/kode-bisat.png"
+            class="not-prose rounded-md w-full">
+        </div>
+      </div>
+    </div>
+
+    
+
     <p>Pada era digital saat ini, menjadi seorang pengembang perangkat lunak atau developer
 merupakan salah satu profesi yang sangat diminati. Dunia teknologi terus berkembang pesat,
 dan permintaan akan pengembang yang kompeten terus meningkat.
@@ -201,7 +223,7 @@ mereka dalam menguasai dunia pemrograman.</p>
         
 
         <div>
-  <a href="https://github.com/rizkikadafi" class="text-xs lg:text-sm">
+  <a href="https://github.com/rizkikadafi" target="_blank" class="text-xs lg:text-sm">
     <i
       class="bi bi-github text-2xl lg:text-3xl block transition-transform hover:scale-150 duration-100"></i>
     <span>rizkikadafi</span>
@@ -212,7 +234,7 @@ mereka dalam menguasai dunia pemrograman.</p>
         
 
         <div>
-  <a href="mailto:rizkikadafi11@gmail.com" class="text-xs lg:text-sm">
+  <a href="mailto:rizkikadafi11@gmail.com" target="_blank" class="text-xs lg:text-sm">
     <i
       class="bi bi-envelope text-2xl lg:text-3xl block transition-transform hover:scale-150 duration-100"></i>
     <span>rizkikadafi11@gmail.com</span>
@@ -223,7 +245,7 @@ mereka dalam menguasai dunia pemrograman.</p>
         
 
         <div>
-  <a href="https://www.linkedin.com/in/rizkikadafi" class="text-xs lg:text-sm">
+  <a href="https://www.linkedin.com/in/rizkikadafi" target="_blank" class="text-xs lg:text-sm">
     <i
       class="bi bi-linkedin text-2xl lg:text-3xl block transition-transform hover:scale-150 duration-100"></i>
     <span>rizkikadafi</span>
