@@ -1,7 +1,9 @@
 - name: Dashboard
-  link: ""
+  link: "#dashboard"
 - name: Categories
   link: "categories"
+- name: Tags
+  link: "tags"
 - name: Recent Post
   link: "#recent"
 - name: Archives

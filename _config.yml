@@ -22,6 +22,10 @@ postcss:
 
 plugins:
   - jekyll-postcss
+  - jekyll-figure
+
+jekyll-figure:
+  paragraphs: false
 
 exclude:
   - package.json

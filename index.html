@@ -5,29 +5,30 @@ title: Dashboard
 
 <div class="content">
   <div class="w-full dark:text-white px-5 sm:px-8">
-    <section id="dashboard" class="h-72 sm:h-96 p-5 px-8 sm:px-14 flex flex-col justify-center items-center">
+
+    <section id="dashboard" class="pt-12 sm:pt-20 px-8 sm:px-14 flex flex-col justify-center items-center">
       <div class="h-full w-full flex flex-col justify-center items-center pt-12">
         <div class="text-center">
           <h1 class="font-bold text-xl sm:text-2xl lg:text-3xl">Welcome to Kadafi's Blog</h1>
           <p class="text-xs sm:text-base text-center my-3 sm:my-4">
-            This blog is a place for me to share my knowledge related to computer science and mathematics
+            This blog is a place for me to share my knowledge related to computer science
           </p>
         </div>
-        <a href="https://rizkikadafi.github.io"
+        <a href="https://rizkikadafi.github.io" target="_blank"
           class="text-center bg-slate-400/70 border-slate-200 hover:bg-slate-700 hover:text-white dark:bg-slate-700/70 dark:hover:bg-slate-700 dark:border-slate-500 border-[1px] active:bg-slate-700 w-32 rounded-3xl py-2 text-xs lg:text-base">
           About Me
         </a>
       </div>
     </section>
 
-    <section id="category">
+    <section id="categories" class="pt-16 md:pt-20">
       <div
         class="mx-auto bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] py-5 px-5 sm:px-0 rounded-md shadow-custom">
 
         <div class="mb-5 text-center text-gray-800 dark:text-gray-200">
           <h2
             class="text-2xl lg:text-3xl font-bold after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-black after:dark:bg-white">
-            Category
+            Categories
           </h2>
         </div>
 
@@ -36,7 +37,7 @@ title: Dashboard
 
             {% assign sort_category = site.categories | sort %}
 
-            {% for category in sort_category %}
+            {% for category in sort_category limit: 4 %}
 
             {% assign sort_category_data = site.data.blog-category | sort: "name" %}
             {% assign img = sort_category_data[forloop.index0].img %}
@@ -57,8 +58,7 @@ title: Dashboard
               <i class="hidden bi bi-arrow-right-circle-fill text-3xl group-hover:block"></i>
             </div>
           </div>
-          <a href="{{site.baseurl}}/categories"
-            class="group flex justify-center items-center text-sm hover:underline">
+          <a href="{{site.baseurl}}/categories" class="group flex justify-center items-center text-sm hover:underline">
             <span class="block mr-2">view all category</span>
             <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
           </a>
@@ -69,7 +69,7 @@ title: Dashboard
 
     <section id='recent' class="pt-16 sm:pt-0">
       {% include header-title.html title='Recent Posts' %}
-      <div class="mt-5 flex flex-col sm:flex-row gap-5">
+      <div class="mt-5 flex flex-col sm:flex-row gap-5 sm:*:w-1/2">
         <div class="flex flex-col gap-5">
           {% for post in site.posts limit: 3 %}
           {% include blog-post-card.html post=post %}
