@@ -2,7 +2,7 @@
 layout: blog
 ---
 
-<div class="lg:mt-20 mt-16 text-white">
+<div class="lg:mt-20 mt-16">
 
   <div class="prose prose-sm sm:prose-base prose-p:text-black dark:prose-p:text-white dark:prose-invert prose-h1:mb-2 prose-h1:text-3xl sm:prose-h1:text-5xl prose-figure:md:w-2/3 
     prose-figure:mx-auto prose-img:rounded-md prose-img:object-cover prose-img:object-center max-w-none px-2 md:px-0 text-slate-800 
@@ -48,34 +48,18 @@ layout: blog
 
 
     {% if page.is_series %}
-    <div class="flex justify-center mt-10">
+    <div class="flex justify-center mt-10 not-prose *:mx-2">
       {% unless prev_post == empty %}
-      <a href="{{site.baseurl}}{{ prev_post[0].url }}"
-        class="flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-          viewBox="0 0 14 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M13 5H1m0 0 4 4M1 5l4-4" />
-        </svg>
-        Previous
-      </a>
+      {% assign link_next = site.baseurl | append: prev_post[0].url %}
+      {% include link-btn.html href=link_next text="Prev" icon="bi-arrow-left" %}
       {% endunless %}
 
-      <a href="{{site.baseurl}}/series/{{ page.series_title }}"
-        class="flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        Series Posts
-      </a>
+      {% assign link_series = site.baseurl | append: "/series/" | append: page.series_title %}
+      {% include link-btn.html href=link_series text="Series" %}
 
       {% unless next_post == empty %}
-      <a href="{{site.baseurl}}{{ next_post[0].url }}"
-        class="flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        Next
-        <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-          viewBox="0 0 14 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M1 5h12m0 0L9 1m4 4L9 9" />
-        </svg>
-      </a>
+      {% assign link_next = site.baseurl | append: next_post[0].url %}
+      {% include link-btn.html href=link_next text="Next" icon="bi-arrow-right" right-icon=true %}
       {% endunless %}
 
     </div>

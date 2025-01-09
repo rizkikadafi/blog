@@ -1,0 +1,8 @@
+<a href="{{ include.href }}"
+  class="flex items-center justify-center {% if include.right-icon %}flex-row-reverse{% endif %} px-4 py-2 text-sm lg:text-base font-medium text-center bg-primary/10 border-primary/20 hover:bg-card border rounded-3xl"
+  {% if include.blank %}target="_blank" {% endif %}>
+  {% if include.icon %}
+  <i class="bi {{ include.icon }} {% if include.right-icon %}ml-2{% else %}mr-2{% endif %}"></i>
+  {% endif %}
+  {{ include.text }}
+</a>
