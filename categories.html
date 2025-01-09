@@ -34,7 +34,7 @@
 
 </head>
 
-<body class="bg-slate-50 dark:bg-slate-800 transition duration-500 lg:px-24">
+<body class="transition duration-500 lg:px-24">
   <div id="default-modal" tabindex="-1"
   class="fixed text-white top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
   <div class="relative w-full max-w-2xl max-h-full">
@@ -55,7 +55,7 @@
           </li>
           
           <li>
-            <a data-modal-hide="default-modal" href="/blog/#recent" class="block py-3 rounded-md">Recent Post</a>
+            <a data-modal-hide="default-modal" href="/blog/series" class="block py-3 rounded-md">Blog Series</a>
           </li>
           
           <li>
@@ -68,109 +68,223 @@
   </div>
 </div>
 
-  <nav id="blog-nav"
-    class="px-10 lg:px-20 bg-slate-300/70 dark:bg-slate-700/70 fixed right-0 left-0 top-0 dark:text-gray-200 z-10 py-3 lg:py-5 transition duration-300 border-slate-600 text-gray-900
-  after:duration-1000 ease-out after:block after:h-0.5 after:w-full after:origin-bottom-right after:scale-x-0 after:bg-slate-500 after:transition-transform after:mt-3 after:absolute after:bottom-0 after:left-0 after:rounded-md after:px-3">
-    <div class="hidden after:origin-bottom-left after:scale-x-100 dark:bg-slate-800/70 backdrop-blur-md">
+  <nav id="blog-nav" class="px-10 lg:px-20 bg-primary/15 fixed right-0 left-0 top-0 z-10 py-3 lg:py-5 transition duration-300
+  after:duration-1000 ease-out after:block after:h-0.5 after:w-full after:origin-bottom-right after:scale-x-0 
+  after:bg-slate-500 after:transition-transform after:mt-3 after:absolute after:bottom-0 after:left-0 
+  after:rounded-md after:px-3">
+  <div class="hidden after:origin-bottom-left after:scale-x-100 backdrop-blur-md">
 
-    </div>
-    <div class=" flex justify-between items-center h-full">
-      <a href="/blog/" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
-      <div class="flex">
-        <ul class="hidden sm:flex *:mx-5">
-          
-          <li class="hover:underline hover:underline-offset-4"><a
-              href="/blog/#dashboard">Dashboard</a></li>
-          
-          <li class="hover:underline hover:underline-offset-4"><a
-              href="/blog/categories">Categories</a></li>
-          
-          <li class="hover:underline hover:underline-offset-4"><a
-              href="/blog/tags">Tags</a></li>
-          
-          <li class="hover:underline hover:underline-offset-4"><a
-              href="/blog/#recent">Recent Post</a></li>
-          
-          <li class="hover:underline hover:underline-offset-4"><a
-              href="/blog/archives">Archives</a></li>
-          
-        </ul>
-        <div class="*:cursor-pointer">
-          <i id="dark-mode" class="bi bi-moon-stars-fill mr-2 text-lg dark:hidden"></i>
-          <i id="light-mode" class="bi bi-brightness-high-fill mr-2 text-xl hidden dark:inline-block"></i>
-          <i data-modal-target="default-modal" data-modal-toggle="default-modal"
-            class="bi bi-list sm:hidden text-xl"></i>
-        </div>
+  </div>
+  <div class="flex justify-between items-center h-full">
+    <a href="/blog/" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
+    <div class="flex">
+      <ul class="hidden sm:flex *:mx-5">
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/#dashboard">Dashboard</a>
+        </li>
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/categories">Categories</a>
+        </li>
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/tags">Tags</a>
+        </li>
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/series">Blog Series</a>
+        </li>
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/archives">Archives</a>
+        </li>
+        
+      </ul>
+      <div class="*:cursor-pointer">
+        <i id="dark-mode" class="bi bi-moon-stars-fill mr-2 text-lg dark:hidden"></i>
+        <i id="light-mode" class="bi bi-brightness-high-fill mr-2 text-xl hidden dark:inline-block"></i>
+        <i data-modal-target="default-modal" data-modal-toggle="default-modal" class="bi bi-list sm:hidden text-xl"></i>
       </div>
     </div>
-  </nav>
-
-  <div id="top-btn" class="fixed right-5 bottom-5 hidden cursor-pointer z-50">
-    <i class="bi bi-arrow-up-circle dark:text-white text-4xl"></i>
   </div>
+</nav>
 
-  <div class="content">
-  <div class="px-8 sm:px-0">
-    <div id="categories-btn"
-      class="flex flex-wrap mt-20 mx-auto bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-3 rounded-md shadow-custom">
 
-      
+  <div class="px-5 sm:px-8">
+    <div id="categories" class="content">
 
-      <span class=" cursor-pointer inline-block mr-2 my-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3
-      py-[2px] text-slate-200" data-category="math">
-        
-        
-          Math
-        
-      </span>
+  <!-- <div id="" -->
+<!--   class="flex flex-wrap mt-20 mx-auto bg-card border-primary/10 border-2 p-3 rounded-md shadow-2xl"> -->
 
-      
+<!--    -->
 
-      <span class=" cursor-pointer inline-block mr-2 my-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3
-      py-[2px] text-slate-200" data-category="programming">
-        
-        
-          Programming
-        
-      </span>
+<!--   <span class="cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-xl px-3 -->
+<!--       py-[2px]" data-btn="math"> -->
+<!--      -->
+<!--      -->
+<!--     Math -->
+<!--      -->
+<!--   </span> -->
 
-      
+<!--    -->
 
-      <span class=" cursor-pointer inline-block mr-2 my-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3
-      py-[2px] text-slate-200" data-category="web">
-        
-        
-          Web
-        
-      </span>
+<!--   <span class="cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-xl px-3 -->
+<!--       py-[2px]" data-btn="programming"> -->
+<!--      -->
+<!--      -->
+<!--     Programming -->
+<!--      -->
+<!--   </span> -->
 
-      
+<!--    -->
 
-      <span class=" cursor-pointer inline-block mr-2 my-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3
-      py-[2px] text-slate-200" data-category="linux">
-        
-        
-          Linux
-        
-      </span>
+<!--   <span class="cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-xl px-3 -->
+<!--       py-[2px]" data-btn="web"> -->
+<!--      -->
+<!--      -->
+<!--     Web -->
+<!--      -->
+<!--   </span> -->
 
-      
+<!--    -->
 
-      <span class=" cursor-pointer inline-block mr-2 my-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3
-      py-[2px] text-slate-200" data-category="general">
-        
-        
-          General
-        
-      </span>
+<!--   <span class="cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-xl px-3 -->
+<!--       py-[2px]" data-btn="linux"> -->
+<!--      -->
+<!--      -->
+<!--     Linux -->
+<!--      -->
+<!--   </span> -->
 
-      
+<!--    -->
 
-    </div>
+<!--   <span class="cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-xl px-3 -->
+<!--       py-[2px]" data-btn="general"> -->
+<!--      -->
+<!--      -->
+<!--     General -->
+<!--      -->
+<!--   </span> -->
 
-    <div id="categories" class="w-full dark:text-white">
-      
-      <section id="math" class="flex-col justify-center items-center mt-5 hidden">
+<!--    -->
+
+<!--   <span class="cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-xl px-3 -->
+<!--       py-[2px]" data-btn="devops"> -->
+<!--      -->
+<!--      -->
+<!--     Devops -->
+<!--      -->
+<!--   </span> -->
+
+<!--    -->
+
+<!--   <span class="cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-xl px-3 -->
+<!--       py-[2px]" data-btn="software-development"> -->
+<!--      -->
+<!--      -->
+<!--     Software -->
+<!--      -->
+<!--     Development -->
+<!--      -->
+<!--   </span> -->
+
+<!--    -->
+
+<!-- </div> -->
+<div id="nav-btn-container"
+  class="flex flex-wrap mt-20 mx-auto bg-card border-primary/10 border-2 p-3 rounded-md shadow-2xl" role="radiogroup">
+  
+  
+  <label
+    class="[&:has([data-state=active])]:border-foreground cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-3xl px-4 py-1"
+    for="math">
+    <button id="math"
+      class="aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sr-only"
+      type="button" role="radio" data-section-id="math" data-state="inactive"></button>
+    
+    Math
+    
+  </label>
+  
+  
+  <label
+    class="[&:has([data-state=active])]:border-foreground cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-3xl px-4 py-1"
+    for="programming">
+    <button id="programming"
+      class="aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sr-only"
+      type="button" role="radio" data-section-id="programming" data-state="inactive"></button>
+    
+    Programming
+    
+  </label>
+  
+  
+  <label
+    class="[&:has([data-state=active])]:border-foreground cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-3xl px-4 py-1"
+    for="web">
+    <button id="web"
+      class="aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sr-only"
+      type="button" role="radio" data-section-id="web" data-state="inactive"></button>
+    
+    Web
+    
+  </label>
+  
+  
+  <label
+    class="[&:has([data-state=active])]:border-foreground cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-3xl px-4 py-1"
+    for="linux">
+    <button id="linux"
+      class="aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sr-only"
+      type="button" role="radio" data-section-id="linux" data-state="inactive"></button>
+    
+    Linux
+    
+  </label>
+  
+  
+  <label
+    class="[&:has([data-state=active])]:border-foreground cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-3xl px-4 py-1"
+    for="general">
+    <button id="general"
+      class="aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sr-only"
+      type="button" role="radio" data-section-id="general" data-state="inactive"></button>
+    
+    General
+    
+  </label>
+  
+  
+  <label
+    class="[&:has([data-state=active])]:border-foreground cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-3xl px-4 py-1"
+    for="devops">
+    <button id="devops"
+      class="aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sr-only"
+      type="button" role="radio" data-section-id="devops" data-state="inactive"></button>
+    
+    Devops
+    
+  </label>
+  
+  
+  <label
+    class="[&:has([data-state=active])]:border-foreground cursor-pointer inline-block mr-3 my-2 text-sm w-fit bg-transparent border-muted border-2 hover:bg-accent backdrop-blur-md rounded-3xl px-4 py-1"
+    for="software-development">
+    <button id="software-development"
+      class="aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sr-only"
+      type="button" role="radio" data-section-id="software-development" data-state="inactive"></button>
+    
+    Software
+    
+    Development
+    
+  </label>
+  
+</div>
+
+
+  <div id="section-container" class="w-full">
+    
+
+    <section id="math"
+      class="flex-col justify-center items-center mt-5 [&:has([data-state=active])]:flex hidden">
+      <div data-state="inactive">
         <div class="text-center mb-5">
           <h1
             class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-black after:dark:bg-white">
@@ -190,7 +304,7 @@
            <div class="flex flex-col gap-4">
             
             <div
-  class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom transition-transform hover:-translate-y-2 duration-200">
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
 
   
   <img src="/blog/assets/image/hero1.jpg" alt="/assets/image/hero1.jpg"
@@ -199,7 +313,7 @@
 
   <div class="mt-3">
     <a href="/blog/math/integral">
-      <h2 class="text-xl font-bold hover:text-sky-200">Integral</h2>
+      <h2 class="text-xl font-bold">Integral</h2>
     </a>
 
     <div>
@@ -207,11 +321,11 @@
     </div>
 
     
-    <a href="/blog/tags?tag=calculus"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">calculus</a>
+    <a href="/blog/tags?data=calculus"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">calculus</a>
     
-    <a href="/blog/tags?tag=integral"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">integral</a>
+    <a href="/blog/tags?data=integral"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">integral</a>
     
 
     <p class="text-sm text-justify mt-2">
@@ -221,7 +335,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </p>
 
     <a href="/blog/math/integral"
-      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-sky-200">
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
       <span class="block mr-2">Read more</span>
       <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
     </a>
@@ -234,7 +348,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
         <div class="flex flex-col gap-4">
           
           <div
-  class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom transition-transform hover:-translate-y-2 duration-200">
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
 
   
   <img src="/blog/assets/image/hero1.jpg" alt="/assets/image/hero1.jpg"
@@ -243,7 +357,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
 
   <div class="mt-3">
     <a href="/blog/math/calculus">
-      <h2 class="text-xl font-bold hover:text-sky-200">Calculus</h2>
+      <h2 class="text-xl font-bold">Calculus</h2>
     </a>
 
     <div>
@@ -251,8 +365,8 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </div>
 
     
-    <a href="/blog/tags?tag=calculus"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">calculus</a>
+    <a href="/blog/tags?data=calculus"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">calculus</a>
     
 
     <p class="text-sm text-justify mt-2">
@@ -262,7 +376,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </p>
 
     <a href="/blog/math/calculus"
-      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-sky-200">
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
       <span class="block mr-2">Read more</span>
       <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
     </a>
@@ -275,7 +389,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
         <div class="flex flex-col gap-4">
           
           <div
-  class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom transition-transform hover:-translate-y-2 duration-200">
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
 
   
   <img src="/blog/assets/image/hero1.jpg" alt="/assets/image/hero1.jpg"
@@ -284,7 +398,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
 
   <div class="mt-3">
     <a href="/blog/math/eigen-value">
-      <h2 class="text-xl font-bold hover:text-sky-200">Eigen Value</h2>
+      <h2 class="text-xl font-bold">Eigen Value</h2>
     </a>
 
     <div>
@@ -292,8 +406,8 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </div>
 
     
-    <a href="/blog/tags?tag=linear-algebra"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">linear-algebra</a>
+    <a href="/blog/tags?data=linear-algebra"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">linear-algebra</a>
     
 
     <p class="text-sm text-justify mt-2">
@@ -303,7 +417,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </p>
 
     <a href="/blog/math/eigen-value"
-      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-sky-200">
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
       <span class="block mr-2">Read more</span>
       <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
     </a>
@@ -317,9 +431,13 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
         
 
             </div>
-      </section>
-      
-      <section id="programming" class="flex-col justify-center items-center mt-5 hidden">
+        </div>
+    </section>
+    
+
+    <section id="programming"
+      class="flex-col justify-center items-center mt-5 [&:has([data-state=active])]:flex hidden">
+      <div data-state="inactive">
         <div class="text-center mb-5">
           <h1
             class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-black after:dark:bg-white">
@@ -340,13 +458,13 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
         <div class="flex flex-col gap-4">
           
           <div
-  class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom transition-transform hover:-translate-y-2 duration-200">
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
 
   
 
   <div class="mt-3">
     <a href="/blog/linux/programming/vim-introduction">
-      <h2 class="text-xl font-bold hover:text-sky-200">Vim Introduction</h2>
+      <h2 class="text-xl font-bold">Vim Introduction</h2>
     </a>
 
     <div>
@@ -354,11 +472,11 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </div>
 
     
-    <a href="/blog/tags?tag=vim"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">vim</a>
+    <a href="/blog/tags?data=vim"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">vim</a>
     
-    <a href="/blog/tags?tag=editor"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">editor</a>
+    <a href="/blog/tags?data=editor"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">editor</a>
     
 
     <p class="text-sm text-justify mt-2">
@@ -368,7 +486,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </p>
 
     <a href="/blog/linux/programming/vim-introduction"
-      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-sky-200">
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
       <span class="block mr-2">Read more</span>
       <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
     </a>
@@ -378,7 +496,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
           
 
             <div
-  class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom transition-transform hover:-translate-y-2 duration-200">
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
 
   
   <img src="/blog/assets/image/hero1.jpg" alt="/assets/image/hero1.jpg"
@@ -387,7 +505,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
 
   <div class="mt-3">
     <a href="/blog/programming/tailwind">
-      <h2 class="text-xl font-bold hover:text-sky-200">Tailwind</h2>
+      <h2 class="text-xl font-bold">Tailwind</h2>
     </a>
 
     <div>
@@ -395,11 +513,11 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </div>
 
     
-    <a href="/blog/tags?tag=tailwind"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">tailwind</a>
+    <a href="/blog/tags?data=tailwind"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">tailwind</a>
     
-    <a href="/blog/tags?tag=css"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">css</a>
+    <a href="/blog/tags?data=css"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">css</a>
     
 
     <p class="text-sm text-justify mt-2">
@@ -409,7 +527,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </p>
 
     <a href="/blog/programming/tailwind"
-      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-sky-200">
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
       <span class="block mr-2">Read more</span>
       <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
     </a>
@@ -422,7 +540,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
             <div class="flex flex-col gap-4">
               
               <div
-  class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom transition-transform hover:-translate-y-2 duration-200">
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
 
   
   <img src="/blog/assets/image/hero1.jpg" alt="/assets/image/hero1.jpg"
@@ -431,7 +549,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
 
   <div class="mt-3">
     <a href="/blog/programming/web/react-JS">
-      <h2 class="text-xl font-bold hover:text-sky-200">React Js</h2>
+      <h2 class="text-xl font-bold">React Js</h2>
     </a>
 
     <div>
@@ -439,11 +557,11 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </div>
 
     
-    <a href="/blog/tags?tag=react"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">react</a>
+    <a href="/blog/tags?data=react"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">react</a>
     
-    <a href="/blog/tags?tag=javascript"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">javascript</a>
+    <a href="/blog/tags?data=javascript"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">javascript</a>
     
 
     <p class="text-sm text-justify mt-2">
@@ -453,7 +571,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </p>
 
     <a href="/blog/programming/web/react-JS"
-      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-sky-200">
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
       <span class="block mr-2">Read more</span>
       <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
     </a>
@@ -463,7 +581,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
               
 
                 <div
-  class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom transition-transform hover:-translate-y-2 duration-200">
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
 
   
   <img src="/blog/assets/image/hero2.jpg" alt="/assets/image/hero2.jpg"
@@ -472,7 +590,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
 
   <div class="mt-3">
     <a href="/blog/programming/data-structure">
-      <h2 class="text-xl font-bold hover:text-sky-200">Data Structure</h2>
+      <h2 class="text-xl font-bold">Data Structure</h2>
     </a>
 
     <div>
@@ -480,11 +598,11 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </div>
 
     
-    <a href="/blog/tags?tag=dsa"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">dsa</a>
+    <a href="/blog/tags?data=dsa"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">dsa</a>
     
-    <a href="/blog/tags?tag=python"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">python</a>
+    <a href="/blog/tags?data=python"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">python</a>
     
 
     <p class="text-sm text-justify mt-2">
@@ -494,7 +612,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </p>
 
     <a href="/blog/programming/data-structure"
-      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-sky-200">
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
       <span class="block mr-2">Read more</span>
       <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
     </a>
@@ -507,13 +625,13 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
             <div class="flex flex-col gap-4">
               
               <div
-  class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom transition-transform hover:-translate-y-2 duration-200">
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
 
   
 
   <div class="mt-3">
     <a href="/blog/programming/b-tree">
-      <h2 class="text-xl font-bold hover:text-sky-200">B Tree</h2>
+      <h2 class="text-xl font-bold">B Tree</h2>
     </a>
 
     <div>
@@ -521,8 +639,8 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </div>
 
     
-    <a href="/blog/tags?tag=dsa"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">dsa</a>
+    <a href="/blog/tags?data=dsa"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">dsa</a>
     
 
     <p class="text-sm text-justify mt-2">
@@ -532,7 +650,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </p>
 
     <a href="/blog/programming/b-tree"
-      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-sky-200">
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
       <span class="block mr-2">Read more</span>
       <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
     </a>
@@ -547,9 +665,13 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
                 
 
             </div>
-      </section>
-      
-      <section id="web" class="flex-col justify-center items-center mt-5 hidden">
+        </div>
+    </section>
+    
+
+    <section id="web"
+      class="flex-col justify-center items-center mt-5 [&:has([data-state=active])]:flex hidden">
+      <div data-state="inactive">
         <div class="text-center mb-5">
           <h1
             class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-black after:dark:bg-white">
@@ -569,7 +691,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
            <div class="flex flex-col gap-4">
             
             <div
-  class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom transition-transform hover:-translate-y-2 duration-200">
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
 
   
   <img src="/blog/assets/image/hero1.jpg" alt="/assets/image/hero1.jpg"
@@ -578,7 +700,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
 
   <div class="mt-3">
     <a href="/blog/programming/web/react-JS">
-      <h2 class="text-xl font-bold hover:text-sky-200">React Js</h2>
+      <h2 class="text-xl font-bold">React Js</h2>
     </a>
 
     <div>
@@ -586,11 +708,11 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </div>
 
     
-    <a href="/blog/tags?tag=react"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">react</a>
+    <a href="/blog/tags?data=react"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">react</a>
     
-    <a href="/blog/tags?tag=javascript"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">javascript</a>
+    <a href="/blog/tags?data=javascript"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">javascript</a>
     
 
     <p class="text-sm text-justify mt-2">
@@ -600,7 +722,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </p>
 
     <a href="/blog/programming/web/react-JS"
-      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-sky-200">
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
       <span class="block mr-2">Read more</span>
       <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
     </a>
@@ -614,9 +736,13 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
         
 
             </div>
-      </section>
-      
-      <section id="linux" class="flex-col justify-center items-center mt-5 hidden">
+        </div>
+    </section>
+    
+
+    <section id="linux"
+      class="flex-col justify-center items-center mt-5 [&:has([data-state=active])]:flex hidden">
+      <div data-state="inactive">
         <div class="text-center mb-5">
           <h1
             class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-black after:dark:bg-white">
@@ -636,13 +762,13 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
            <div class="flex flex-col gap-4">
             
             <div
-  class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom transition-transform hover:-translate-y-2 duration-200">
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
 
   
 
   <div class="mt-3">
     <a href="/blog/linux/programming/vim-introduction">
-      <h2 class="text-xl font-bold hover:text-sky-200">Vim Introduction</h2>
+      <h2 class="text-xl font-bold">Vim Introduction</h2>
     </a>
 
     <div>
@@ -650,11 +776,11 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </div>
 
     
-    <a href="/blog/tags?tag=vim"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">vim</a>
+    <a href="/blog/tags?data=vim"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">vim</a>
     
-    <a href="/blog/tags?tag=editor"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">editor</a>
+    <a href="/blog/tags?data=editor"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">editor</a>
     
 
     <p class="text-sm text-justify mt-2">
@@ -664,7 +790,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </p>
 
     <a href="/blog/linux/programming/vim-introduction"
-      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-sky-200">
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
       <span class="block mr-2">Read more</span>
       <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
     </a>
@@ -678,9 +804,13 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
         
 
             </div>
-      </section>
-      
-      <section id="general" class="flex-col justify-center items-center mt-5 hidden">
+        </div>
+    </section>
+    
+
+    <section id="general"
+      class="flex-col justify-center items-center mt-5 [&:has([data-state=active])]:flex hidden">
+      <div data-state="inactive">
         <div class="text-center mb-5">
           <h1
             class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-black after:dark:bg-white">
@@ -700,7 +830,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
            <div class="flex flex-col gap-4">
             
             <div
-  class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom transition-transform hover:-translate-y-2 duration-200">
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
 
   
   <img src="/blog/assets/image/blog-assets/general/kode-bisat.png" alt="/assets/image/blog-assets/general/kode-bisat.png"
@@ -709,7 +839,7 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
 
   <div class="mt-3">
     <a href="/blog/general/kodebisat-codepolitan">
-      <h2 class="text-xl font-bold hover:text-sky-200">kodebisat by codepolitan</h2>
+      <h2 class="text-xl font-bold">kodebisat by codepolitan</h2>
     </a>
 
     <div>
@@ -717,17 +847,17 @@ kinds of large herbaceous flowering plants in the genus Musa.</p>
     </div>
 
     
-    <a href="/blog/tags?tag=beasiswa"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">beasiswa</a>
+    <a href="/blog/tags?data=beasiswa"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">beasiswa</a>
     
-    <a href="/blog/tags?tag=codepolitan"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">codepolitan</a>
+    <a href="/blog/tags?data=codepolitan"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">codepolitan</a>
     
-    <a href="/blog/tags?tag=alibaba"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">alibaba</a>
+    <a href="/blog/tags?data=alibaba"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">alibaba</a>
     
-    <a href="/blog/tags?tag=kodebisat"
-      class="inline-block mr-2 mt-2 text-sm w-fit bg-slate-500/70 backdrop-blur-md rounded-xl px-3 py-[2px] text-slate-200">kodebisat</a>
+    <a href="/blog/tags?data=kodebisat"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">kodebisat</a>
     
 
     <p class="text-sm text-justify mt-2">
@@ -738,7 +868,7 @@ dan permintaan akan pengembang yang kompeten terus meningkat.</p>
     </p>
 
     <a href="/blog/general/kodebisat-codepolitan"
-      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-sky-200">
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
       <span class="block mr-2">Read more</span>
       <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
     </a>
@@ -752,15 +882,159 @@ dan permintaan akan pengembang yang kompeten terus meningkat.</p>
         
 
             </div>
-      </section>
-      
-    </div>
-  </div>
+        </div>
+    </section>
+    
 
-  <section id="contact" class="mt-20">
-    <div class="mb-5 text-center text-gray-800 dark:text-gray-200">
+    <section id="devops"
+      class="flex-col justify-center items-center mt-5 [&:has([data-state=active])]:flex hidden">
+      <div data-state="inactive">
+        <div class="text-center mb-5">
+          <h1
+            class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-black after:dark:bg-white">
+            
+            
+            Devops
+            
+          </h1>
+          <p class="w-3/5"></p>
+        </div>
+
+        <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+          
+          
+
+           <div class="flex flex-col gap-4">
+            
+            <div
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
+
+  
+  <img src="/blog/assets/image/blog-assets/general/kode-bisat.png" alt="/assets/image/blog-assets/general/kode-bisat.png"
+    class="w-full h-52 sm:h-64 rounded-md object-cover">
+  
+
+  <div class="mt-3">
+    <a href="/blog/devops/software-development/What-is-Devops">
+      <h2 class="text-xl font-bold">What is devops</h2>
+    </a>
+
+    <div>
+      <span class="text-sm">Kadafi - 05 Jan 2025</span>
+    </div>
+
+    
+    <a href="/blog/tags?data=devops"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">devops</a>
+    
+
+    <p class="text-sm text-justify mt-2">
+      <p>Pada era digital saat ini, menjadi seorang pengembang perangkat lunak atau developer
+merupakan salah satu profesi yang sangat diminati. Dunia teknologi terus berkembang pesat,
+dan permintaan akan pengembang yang kompeten terus meningkat.</p>
+
+    </p>
+
+    <a href="/blog/devops/software-development/What-is-Devops"
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
+      <span class="block mr-2">Read more</span>
+      <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
+    </a>
+  </div>
+</div>
+
+            
+        </div>
+        
+
+        
+
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="software-development"
+      class="flex-col justify-center items-center mt-5 [&:has([data-state=active])]:flex hidden">
+      <div data-state="inactive">
+        <div class="text-center mb-5">
+          <h1
+            class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-black after:dark:bg-white">
+            
+            
+            Software
+            
+            Development
+            
+          </h1>
+          <p class="w-3/5"></p>
+        </div>
+
+        <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+          
+          
+
+           <div class="flex flex-col gap-4">
+            
+            <div
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
+
+  
+  <img src="/blog/assets/image/blog-assets/general/kode-bisat.png" alt="/assets/image/blog-assets/general/kode-bisat.png"
+    class="w-full h-52 sm:h-64 rounded-md object-cover">
+  
+
+  <div class="mt-3">
+    <a href="/blog/devops/software-development/What-is-Devops">
+      <h2 class="text-xl font-bold">What is devops</h2>
+    </a>
+
+    <div>
+      <span class="text-sm">Kadafi - 05 Jan 2025</span>
+    </div>
+
+    
+    <a href="/blog/tags?data=devops"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">devops</a>
+    
+
+    <p class="text-sm text-justify mt-2">
+      <p>Pada era digital saat ini, menjadi seorang pengembang perangkat lunak atau developer
+merupakan salah satu profesi yang sangat diminati. Dunia teknologi terus berkembang pesat,
+dan permintaan akan pengembang yang kompeten terus meningkat.</p>
+
+    </p>
+
+    <a href="/blog/devops/software-development/What-is-Devops"
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
+      <span class="block mr-2">Read more</span>
+      <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
+    </a>
+  </div>
+</div>
+
+            
+        </div>
+        
+
+        
+
+            </div>
+        </div>
+    </section>
+    
+  </div>
+</div>
+
+<script src="/blog/assets/js/nav-btn.js"></script>
+
+
+    <section id="contact" class="mt-10 not-prose">
+  <div class="mb-5 text-center">
   <h2
-    class="text-2xl lg:text-3xl lg:pt-24 font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-black after:dark:bg-white">
+    class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-foreground">
     Contact Me
   </h2>
   
@@ -769,14 +1043,12 @@ dan permintaan akan pengembang yang kompeten terus meningkat.</p>
 </div>
 
 
-    <div class="mb-5 box-border text-white">
-      <div
-        class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom">
-        <div
-          class="flex *:mx-2 justify-center text-center mb-3 py-3 border-b-slate-600 border-b-2 text-slate-800 dark:text-white">
-          
+  <div class="mb-5 box-border">
+    <div class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-2xl">
+      <div class="flex *:mx-2 justify-center text-center mb-3 py-3 border-b-primary/10 border-b-2">
+        
 
-          <div>
+        <div>
   <a href="https://github.com/rizkikadafi" target="_blank" class="text-xs lg:text-sm">
     <i
       class="bi bi-github text-2xl lg:text-3xl block transition-transform hover:scale-150 duration-100"></i>
@@ -785,9 +1057,9 @@ dan permintaan akan pengembang yang kompeten terus meningkat.</p>
 </div>
 
 
-          
+        
 
-          <div>
+        <div>
   <a href="mailto:rizkikadafi11@gmail.com" target="_blank" class="text-xs lg:text-sm">
     <i
       class="bi bi-envelope text-2xl lg:text-3xl block transition-transform hover:scale-150 duration-100"></i>
@@ -796,9 +1068,9 @@ dan permintaan akan pengembang yang kompeten terus meningkat.</p>
 </div>
 
 
-          
+        
 
-          <div>
+        <div>
   <a href="https://www.linkedin.com/in/rizkikadafi" target="_blank" class="text-xs lg:text-sm">
     <i
       class="bi bi-linkedin text-2xl lg:text-3xl block transition-transform hover:scale-150 duration-100"></i>
@@ -807,24 +1079,28 @@ dan permintaan akan pengembang yang kompeten terus meningkat.</p>
 </div>
 
 
-          
-        </div>
-        <div class="text-xs lg:text-sm text-center text-slate-800 dark:text-white">
-          <p><i class="bi bi-c-circle"></i> 2024 Muhamad Rizki Kadafi. All Rights Reserved.</p>
-        </div>
+        
+      </div>
+      <div class="text-xs lg:text-sm text-center">
+        <p><i class="bi bi-c-circle"></i> 2025 Muhamad Rizki Kadafi. All Rights Reserved.</p>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>
 
-<script src="/blog/assets/js/category.js"></script>
+  </div>
+
+
+  <div id="top-btn" class="fixed right-5 bottom-5 hidden cursor-pointer z-50">
+  <i class="bi bi-arrow-up-circle dark:text-white text-4xl"></i>
+</div>
 
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   <script src="/blog/assets/js/toggle_dark.js"></script>
   <script src="/blog/assets/js/blog-navbar.js"></script>
-  <script src="/blog/assets/js/blog-category-swiper.js"></script>
+  <script src="/blog/assets/js/blog-swiper.js"></script>
 </body>
 
 </html>

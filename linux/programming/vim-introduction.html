@@ -35,7 +35,7 @@
 
 </head>
 
-<body class="bg-slate-50 dark:bg-slate-800 transition duration-500 lg:px-24">
+<body class="transition duration-500 lg:px-24">
   <div id="default-modal" tabindex="-1"
   class="fixed text-white top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
   <div class="relative w-full max-w-2xl max-h-full">
@@ -56,7 +56,7 @@
           </li>
           
           <li>
-            <a data-modal-hide="default-modal" href="/blog/#recent" class="block py-3 rounded-md">Recent Post</a>
+            <a data-modal-hide="default-modal" href="/blog/series" class="block py-3 rounded-md">Blog Series</a>
           </li>
           
           <li>
@@ -69,48 +69,46 @@
   </div>
 </div>
 
-  <nav id="blog-nav"
-    class="px-10 lg:px-20 bg-slate-300/70 dark:bg-slate-700/70 fixed right-0 left-0 top-0 dark:text-gray-200 z-10 py-3 lg:py-5 transition duration-300 border-slate-600 text-gray-900
-  after:duration-1000 ease-out after:block after:h-0.5 after:w-full after:origin-bottom-right after:scale-x-0 after:bg-slate-500 after:transition-transform after:mt-3 after:absolute after:bottom-0 after:left-0 after:rounded-md after:px-3">
-    <div class="hidden after:origin-bottom-left after:scale-x-100 dark:bg-slate-800/70 backdrop-blur-md">
+  <nav id="blog-nav" class="px-10 lg:px-20 bg-primary/15 fixed right-0 left-0 top-0 z-10 py-3 lg:py-5 transition duration-300
+  after:duration-1000 ease-out after:block after:h-0.5 after:w-full after:origin-bottom-right after:scale-x-0 
+  after:bg-slate-500 after:transition-transform after:mt-3 after:absolute after:bottom-0 after:left-0 
+  after:rounded-md after:px-3">
+  <div class="hidden after:origin-bottom-left after:scale-x-100 backdrop-blur-md">
 
-    </div>
-    <div class=" flex justify-between items-center h-full">
-      <a href="/blog/" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
-      <div class="flex">
-        <ul class="hidden sm:flex *:mx-5">
-          
-          <li class="hover:underline hover:underline-offset-4"><a
-              href="/blog/#dashboard">Dashboard</a></li>
-          
-          <li class="hover:underline hover:underline-offset-4"><a
-              href="/blog/categories">Categories</a></li>
-          
-          <li class="hover:underline hover:underline-offset-4"><a
-              href="/blog/tags">Tags</a></li>
-          
-          <li class="hover:underline hover:underline-offset-4"><a
-              href="/blog/#recent">Recent Post</a></li>
-          
-          <li class="hover:underline hover:underline-offset-4"><a
-              href="/blog/archives">Archives</a></li>
-          
-        </ul>
-        <div class="*:cursor-pointer">
-          <i id="dark-mode" class="bi bi-moon-stars-fill mr-2 text-lg dark:hidden"></i>
-          <i id="light-mode" class="bi bi-brightness-high-fill mr-2 text-xl hidden dark:inline-block"></i>
-          <i data-modal-target="default-modal" data-modal-toggle="default-modal"
-            class="bi bi-list sm:hidden text-xl"></i>
-        </div>
+  </div>
+  <div class="flex justify-between items-center h-full">
+    <a href="/blog/" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
+    <div class="flex">
+      <ul class="hidden sm:flex *:mx-5">
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/#dashboard">Dashboard</a>
+        </li>
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/categories">Categories</a>
+        </li>
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/tags">Tags</a>
+        </li>
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/series">Blog Series</a>
+        </li>
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/archives">Archives</a>
+        </li>
+        
+      </ul>
+      <div class="*:cursor-pointer">
+        <i id="dark-mode" class="bi bi-moon-stars-fill mr-2 text-lg dark:hidden"></i>
+        <i id="light-mode" class="bi bi-brightness-high-fill mr-2 text-xl hidden dark:inline-block"></i>
+        <i data-modal-target="default-modal" data-modal-toggle="default-modal" class="bi bi-list sm:hidden text-xl"></i>
       </div>
     </div>
-  </nav>
-
-  <div id="top-btn" class="fixed right-5 bottom-5 hidden cursor-pointer z-50">
-    <i class="bi bi-arrow-up-circle dark:text-white text-4xl"></i>
   </div>
+</nav>
 
-  <div class="p-4 px-6 sm:px-32 lg:mt-20 mt-10 text-white">
+
+  <div class="px-5 sm:px-8">
+    <div class="lg:mt-20 mt-16 text-white">
 
   <div class="prose prose-sm sm:prose-base prose-p:text-black dark:prose-p:text-white dark:prose-invert prose-h1:mb-2 prose-h1:text-3xl sm:prose-h1:text-5xl prose-figure:md:w-2/3 
     prose-figure:mx-auto prose-img:rounded-md prose-img:object-cover prose-img:object-center max-w-none px-2 md:px-0 text-slate-800 
@@ -143,16 +141,33 @@ color, and firmness, but is usually elongated and curved, with soft
 flesh rich in starch covered with a rind, which may be green, yellow,
 red, purple, or brown when ripe.</p>
 
+    
+    
+    
+    
+
+
+    
   </div>
 
 </div>
 
-<section id="contact" class="pt-20">
-  <div class="px-3 mb-5 box-border text-white">
-    <div
-      class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom">
-      <div
-        class="flex *:mx-2 justify-center text-center mb-3 py-3 border-b-slate-600 border-b-2 text-slate-800 dark:text-white">
+
+    <section id="contact" class="mt-10 not-prose">
+  <div class="mb-5 text-center">
+  <h2
+    class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-foreground">
+    Contact Me
+  </h2>
+  
+  <p class="text-xs lg:text-base">Let's connect with me</p>
+  
+</div>
+
+
+  <div class="mb-5 box-border">
+    <div class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-2xl">
+      <div class="flex *:mx-2 justify-center text-center mb-3 py-3 border-b-primary/10 border-b-2">
         
 
         <div>
@@ -188,19 +203,26 @@ red, purple, or brown when ripe.</p>
 
         
       </div>
-      <div class="text-xs lg:text-sm text-center text-slate-800 dark:text-white">
-        <p><i class="bi bi-c-circle"></i> 2024 Muhamad Rizki Kadafi. All Rights Reserved.</p>
+      <div class="text-xs lg:text-sm text-center">
+        <p><i class="bi bi-c-circle"></i> 2025 Muhamad Rizki Kadafi. All Rights Reserved.</p>
       </div>
     </div>
   </div>
 </section>
+
+  </div>
+
+
+  <div id="top-btn" class="fixed right-5 bottom-5 hidden cursor-pointer z-50">
+  <i class="bi bi-arrow-up-circle dark:text-white text-4xl"></i>
+</div>
 
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   <script src="/blog/assets/js/toggle_dark.js"></script>
   <script src="/blog/assets/js/blog-navbar.js"></script>
-  <script src="/blog/assets/js/blog-category-swiper.js"></script>
+  <script src="/blog/assets/js/blog-swiper.js"></script>
 </body>
 
 </html>
