@@ -1,0 +1,15 @@
+- name: devops
+  desc: Blog Series related to devops implementation 
+  img: linux.jpeg
+- name: calculus
+  desc: Blog Series related to Calculus concepts
+  img: linux.jpeg
+- name: web
+  desc: Blog Series related to web development
+  img: linux.jpeg
+- name: linux
+  desc: Blog Series related to the use of the Linux operating system 
+  img: linux.jpeg
+- name: general
+  desc: Blog Series related to general topic and sharing my opinion 
+  img: linux.jpeg

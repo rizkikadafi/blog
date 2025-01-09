@@ -1,0 +1,24 @@
+<div class="swiper-slide">
+  <a href="{{site.baseurl}}/series/{{ include.series.name }}">
+    <div class="relative">
+      <img src="{{site.baseurl}}/assets/image/blog-series/{{ include.series.img }}" alt="{{include.series.img}}"
+        class="rounded-md">
+      <div
+        class="absolute w-full h-full top-0 left-0 rounded-md bg-gradient-to-t from-black flex flex-col justify-end p-3">
+        <div class="mb-2">
+          <h3 class="font-bold text-lg">
+            {% assign words = include.series.name | split: "-" %}
+            {% for word in words %}
+            {{ word | capitalize }}
+            {% endfor %}
+          </h3>
+          <p class="text-sm">{{ include.series.desc }}</p>
+        </div>
+
+        {% assign series_size = site.posts | where: "is_series", true | where: "series_title", include.series.name |
+        size %}
+        <span class="text-xs">{{ series_size }} articles</span>
+      </div>
+    </div>
+  </a>
+</div>

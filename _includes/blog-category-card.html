@@ -1,19 +1,20 @@
 <div class="swiper-slide">
-  <a href="{{site.baseurl}}/categories?category={{ include.category[0] }}">
-    <div class="relative text-white">
-      <img src="{{site.baseurl}}/assets/image/blog-category/{{ include.img }}" alt="{{include.img}}" class="rounded-md">
+  <a href="{{site.baseurl}}/categories?data={{ include.category.name }}">
+    <div class="relative">
+      <img src="{{site.baseurl}}/assets/image/blog-category/{{ include.category.img }}" alt="{{include.category.img}}"
+        class="rounded-md">
       <div
         class="absolute w-full h-full top-0 left-0 rounded-md bg-gradient-to-t from-black flex flex-col justify-end p-3">
         <div class="mb-2">
           <h3 class="font-bold text-lg">
-            {% assign words = include.category[0] | split: "-" %}
+            {% assign words = include.category.name | split: "-" %}
             {% for word in words %}
             {{ word | capitalize }}
             {% endfor %}
           </h3>
-          <p class="text-sm">{{ include.desc }}</p>
+          <p class="text-sm">{{ include.category.desc }}</p>
         </div>
-        <span class="text-xs">{{ include.category[1] | size }} articles</span>
+        <span class="text-xs">{{ site.categories[include.category.name] | size }} articles</span>
       </div>
     </div>
   </a>

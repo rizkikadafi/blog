@@ -1,0 +1,29 @@
+---
+layout: blog
+permalink: /series
+title: Series
+---
+{% assign series = "" | split: "," %}
+{% assign series_post = "" | split: "," | sort: 'series_order' %}
+{% assign posts = site.posts | where: "is_series", true %}
+
+{% for post in posts %}
+{% unless series contains post.series_title %}
+{% assign series = series | push: post.series_title %}
+{% endunless %}
+{% endfor %}
+
+<div class="content">
+  <section id='series' class="pt-12 sm:pt-20">
+
+    {% include header-title.html title='Blog Series' %}
+    {% for series in site.data.blog-series %}
+    {% endfor %}
+
+    <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {% for series_name in series %}
+      {% include blog-series-card.html series_name=series_name %}
+      {% endfor %}
+    </div>
+  </section>
+</div>

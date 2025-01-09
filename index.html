@@ -4,8 +4,9 @@ title: Dashboard
 ---
 
 <div class="content">
-  <div class="w-full dark:text-white px-5 sm:px-8">
+  <div class="w-full">
 
+    <!-- Dashboard -->
     <section id="dashboard" class="pt-12 sm:pt-20 px-8 sm:px-14 flex flex-col justify-center items-center">
       <div class="h-full w-full flex flex-col justify-center items-center pt-12">
         <div class="text-center">
@@ -14,36 +15,26 @@ title: Dashboard
             This blog is a place for me to share my knowledge related to computer science
           </p>
         </div>
-        <a href="https://rizkikadafi.github.io" target="_blank"
-          class="text-center bg-slate-400/70 border-slate-200 hover:bg-slate-700 hover:text-white dark:bg-slate-700/70 dark:hover:bg-slate-700 dark:border-slate-500 border-[1px] active:bg-slate-700 w-32 rounded-3xl py-2 text-xs lg:text-base">
+        <a href="https://rizkikadafi.github.io" target="_blank" class="text-center bg-transparent border-primary/20 hover:bg-border border-2 w-32
+          rounded-3xl py-2 text-xs lg:text-base">
           About Me
         </a>
       </div>
     </section>
+    <!-- end Dashboard -->
 
+    <!-- Categories -->
     <section id="categories" class="pt-16 md:pt-20">
-      <div
-        class="mx-auto bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] py-5 px-5 sm:px-0 rounded-md shadow-custom">
+      <div class="mx-auto bg-card border-primary/10 border-2 py-5 px-5 sm:px-0 rounded-md shadow-2xl">
 
-        <div class="mb-5 text-center text-gray-800 dark:text-gray-200">
-          <h2
-            class="text-2xl lg:text-3xl font-bold after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-black after:dark:bg-white">
-            Categories
-          </h2>
+        <div class="mb-5 text-center">
+          {% include header-title.html title='Categories' %}
         </div>
 
         <div class="swiper category-swiper mx-auto sm:w-[95%]">
           <div class="swiper-wrapper">
-
-            {% assign sort_category = site.categories | sort %}
-
-            {% for category in sort_category limit: 4 %}
-
-            {% assign sort_category_data = site.data.blog-category | sort: "name" %}
-            {% assign img = sort_category_data[forloop.index0].img %}
-            {% assign desc = sort_category_data[forloop.index0].desc %}
-
-            {% include blog-category-card.html category=category desc=desc img=img %}
+            {% for category in site.data.blog-category %}
+            {% include blog-category-card.html category=category %}
             {% endfor %}
           </div>
         </div>
@@ -64,10 +55,11 @@ title: Dashboard
           </a>
         </div>
       </div>
-
     </section>
+    <!-- end Categories -->
 
-    <section id='recent' class="pt-16 sm:pt-0">
+    <!-- Recent Posts -->
+    <section id='recent' class="pt-16 sm:pt-20">
       {% include header-title.html title='Recent Posts' %}
       <div class="mt-5 flex flex-col sm:flex-row gap-5 sm:*:w-1/2">
         <div class="flex flex-col gap-5">
@@ -82,26 +74,42 @@ title: Dashboard
         </div>
       </div>
     </section>
+    <!-- end Recent Posts -->
 
-    <section id="contact" class="mt-20">
-      {% include header-title.html title='Contact Me' subtitle="Let's connect with me" %}
+    <!-- Post Series -->
+    <section id="series" class="pt-16 md:pt-20">
+      <div class="mx-auto bg-card border-primary/10 border-2 py-5 px-5 sm:px-0 rounded-md shadow-2xl">
 
-      <div class="mb-5 box-border text-white">
-        <div
-          class="bg-slate-400/70 border-slate-200 dark:bg-slate-700/70 backdrop-blur-md dark:border-slate-500 border-[1px] p-4 rounded-md shadow-custom">
-          <div
-            class="flex *:mx-2 justify-center text-center mb-3 py-3 border-b-slate-600 border-b-2 text-slate-800 dark:text-white">
-            {% for item in site.data.contact %}
+        <div class="mb-5 text-center">
+          {% include header-title.html title='Blog Series' %}
+        </div>
 
-            {% include contact.html name=item.name link=item.link icon=item.icon %}
-
+        <div class="swiper series-swiper mx-auto sm:w-[95%]">
+          <div class="swiper-wrapper">
+            {% for series in site.data.blog-series %}
+            {% include blog-series-swiper.html series=series %}
             {% endfor %}
           </div>
-          <div class="text-xs lg:text-sm text-center text-slate-800 dark:text-white">
-            <p><i class="bi bi-c-circle"></i> 2024 Muhamad Rizki Kadafi. All Rights Reserved.</p>
+        </div>
+        <div class="w-full flex justify-between items-center mt-3 sm:px-4 lg:px-5">
+          <div class="flex">
+            <div class="group series-button-prev mr-3">
+              <i class="bi bi-arrow-left-circle text-3xl group-hover:hidden"></i>
+              <i class="hidden bi bi-arrow-left-circle-fill text-3xl group-hover:block"></i>
+            </div>
+            <div class="group series-button-next">
+              <i class="bi bi-arrow-right-circle text-3xl group-hover:hidden"></i>
+              <i class="hidden bi bi-arrow-right-circle-fill text-3xl group-hover:block"></i>
+            </div>
           </div>
+          <a href="{{site.baseurl}}/series" class="group flex justify-center items-center text-sm hover:underline">
+            <span class="block mr-2">view all series</span>
+            <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
+          </a>
         </div>
       </div>
     </section>
+    <!-- end Post Series -->
+
   </div>
 </div>

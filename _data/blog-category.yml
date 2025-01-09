@@ -1,18 +1,15 @@
-- name: Math
+- name: math
   desc: Posts related to mathematical concepts in computer science 
   img: math.jpeg
-- name: Programming
+- name: programming
   desc: Posts related to programming concepts
   img: programming.jpeg
-- name: Web
+- name: web
   desc: Posts related to web development
   img: web.jpeg
-- name: Linux
+- name: linux
   desc: Posts related to the use of the Linux operating system 
   img: linux.jpeg
-- name: General
+- name: general
   desc: Posts related to general topic and sharing my opinion 
   img: general.jpeg
-# - name: Software Development
-#   desc: Posts related to software development process 
-#   img: general.jpeg

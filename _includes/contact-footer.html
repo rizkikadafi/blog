@@ -1,0 +1,18 @@
+<section id="contact" class="mt-10 not-prose">
+  {% include header-title.html title='Contact Me' subtitle="Let's connect with me" %}
+
+  <div class="mb-5 box-border">
+    <div class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-2xl">
+      <div class="flex *:mx-2 justify-center text-center mb-3 py-3 border-b-primary/10 border-b-2">
+        {% for item in site.data.contact %}
+
+        {% include contact.html name=item.name link=item.link icon=item.icon %}
+
+        {% endfor %}
+      </div>
+      <div class="text-xs lg:text-sm text-center">
+        <p><i class="bi bi-c-circle"></i> 2025 Muhamad Rizki Kadafi. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</section>

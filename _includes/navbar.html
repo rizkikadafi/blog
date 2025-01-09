@@ -1,0 +1,24 @@
+<nav id="blog-nav" class="px-10 lg:px-20 bg-primary/15 fixed right-0 left-0 top-0 z-10 py-3 lg:py-5 transition duration-300
+  after:duration-1000 ease-out after:block after:h-0.5 after:w-full after:origin-bottom-right after:scale-x-0 
+  after:bg-slate-500 after:transition-transform after:mt-3 after:absolute after:bottom-0 after:left-0 
+  after:rounded-md after:px-3">
+  <div class="hidden after:origin-bottom-left after:scale-x-100 backdrop-blur-md">
+
+  </div>
+  <div class="flex justify-between items-center h-full">
+    <a href="{{site.baseurl}}/" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
+    <div class="flex">
+      <ul class="hidden sm:flex *:mx-5">
+        {% for item in site.data.blog-navigation %}
+        <li class="hover:underline hover:underline-offset-4"><a href="{{site.baseurl}}/{{item.link}}">{{item.name}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="*:cursor-pointer">
+        <i id="dark-mode" class="bi bi-moon-stars-fill mr-2 text-lg dark:hidden"></i>
+        <i id="light-mode" class="bi bi-brightness-high-fill mr-2 text-xl hidden dark:inline-block"></i>
+        <i data-modal-target="default-modal" data-modal-toggle="default-modal" class="bi bi-list sm:hidden text-xl"></i>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,8 +1,92 @@
 ---
 ---
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+
+/* :root { */
+/*   --background: 248 250 252; */
+/*   --foreground: 148 163 184 / 0.7; */
+/*   --invert: 31 41 55; */
+/*   --border: 226 232 240; */
+/*   --nav: 203 213 225 / 0.7; */
+/* } */
+:root {
+  --gradient: #083344;
+  --background: 209 98.95% 98.3%;
+  --foreground: 209 7.9% 0.6%;
+
+  --muted: 209 7.9% 91.5%;
+  --muted-foreground: 209 3.95% 41.5%;
+
+  --popover: 209 20.47999999999999% 84.7%;
+  --popover-foreground: 209 7.9% 0.75%;
+
+  --card: 209 20.47999999999999% 84.7%;
+  --card-foreground: 209 7.9% 0.75%;
+
+  --border: 209 12.9% 89.6%;
+  --input: 209 12.9% 89.6%;
+
+  --primary: 209 79% 15%;
+  --primary-foreground: 209 1.58% 91.5%;
+
+  --secondary: 209 4.74% 92.35%;
+  --secondary-foreground: 209 5.74% 11.5%;
+
+  --accent: 209 4.74% 92.35%;
+  --accent-foreground: 209 5.74% 11.5%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  --ring: 209 79% 15%;
+
+  --radius: 0.5rem;
+}
+
+/* .dark { */
+/*   --background: 30 41 59; */
+/*   --foreground: 51 65 85 / 0.7; */
+/*   --invert: 229 231 235; */
+/*   --border: 100 116 139; */
+/*   --nav: 51 65 85 / 0.7; */
+
+/* } */
+.dark {
+  --gradient: #67e8f9;
+
+  --background: 199 60.45% 5.52%;
+  --foreground: 199 9.3% 98.45%;
+
+  --muted: 199 46.5% 20.7%;
+  --muted-foreground: 199 9.3% 56.9%;
+
+  --popover: 199 46.4% 8.969999999999999%;
+  --popover-foreground: 199 9.3% 98.45%;
+
+  --card: 199 46.4% 8.969999999999999%;
+  --card-foreground: 199 9.3% 98.45%;
+
+  --border: 199 46.5% 20.7%;
+  --input: 199 46.5% 20.7%;
+
+  --primary: 199 93% 69%;
+  --primary-foreground: 199 9.3% 6.8999999999999995%;
+
+  --secondary: 199 46.5% 20.7%;
+  --secondary-foreground: 199 9.3% 98.45%;
+
+  --accent: 199 46.5% 20.7%;
+  --accent-foreground: 199 9.3% 98.45%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 199 9.3% 98.45%;
+
+  --ring: 199 93% 69%;
+}
 
 @layer utilities {
   .bg-radial-gradient-center {
@@ -94,5 +178,8 @@
   }
 }
 
-
-
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
