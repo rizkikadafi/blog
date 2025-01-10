@@ -36,30 +36,64 @@
 
 <body class="transition duration-500 lg:px-24">
   <div id="default-modal" tabindex="-1"
-  class="fixed text-white top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+  class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
   <div class="relative w-full max-w-2xl max-h-full">
-    <div class="relative bg-slate-800 rounded-lg shadow">
-      <div class="p-2 md:p-5 space-y-4 text-center">
-        <ul>
+    <div class="relative bg-card border-primary/10 border-2 rounded-lg shadow">
+      <div class="flex items-center justify-between p-4 md:p-5 border-b-2 rounded-t border-primary/10">
+        <h3 class="text-lg font-semibold">
+          Blog Navigation
+        </h3>
+        <button type="button"
+          class="text-muted-foreground bg-transparent hover:bg-background rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center"
+          data-modal-toggle="default-modal">
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+      </div>
+      <div class="px-4">
+        <ul class="my-4 space-y-3">
           
           <li>
-            <a data-modal-hide="default-modal" href="/blog/#dashboard" class="block py-3 rounded-md">Dashboard</a>
+            <a href="/blog/#dashboard"
+              class="flex items-center justify-between p-3 text-base font-bold bg-primary/10 border-primary/20 hover:bg-card border rounded-lg group hover:shadow">
+              <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
+              <i class="bi bi-caret-right"></i>
+            </a>
           </li>
           
           <li>
-            <a data-modal-hide="default-modal" href="/blog/categories" class="block py-3 rounded-md">Categories</a>
+            <a href="/blog/categories"
+              class="flex items-center justify-between p-3 text-base font-bold bg-primary/10 border-primary/20 hover:bg-card border rounded-lg group hover:shadow">
+              <span class="flex-1 ms-3 whitespace-nowrap">Categories</span>
+              <i class="bi bi-caret-right"></i>
+            </a>
           </li>
           
           <li>
-            <a data-modal-hide="default-modal" href="/blog/tags" class="block py-3 rounded-md">Tags</a>
+            <a href="/blog/tags"
+              class="flex items-center justify-between p-3 text-base font-bold bg-primary/10 border-primary/20 hover:bg-card border rounded-lg group hover:shadow">
+              <span class="flex-1 ms-3 whitespace-nowrap">Tags</span>
+              <i class="bi bi-caret-right"></i>
+            </a>
           </li>
           
           <li>
-            <a data-modal-hide="default-modal" href="/blog/series" class="block py-3 rounded-md">Blog Series</a>
+            <a href="/blog/series"
+              class="flex items-center justify-between p-3 text-base font-bold bg-primary/10 border-primary/20 hover:bg-card border rounded-lg group hover:shadow">
+              <span class="flex-1 ms-3 whitespace-nowrap">Blog Series</span>
+              <i class="bi bi-caret-right"></i>
+            </a>
           </li>
           
           <li>
-            <a data-modal-hide="default-modal" href="/blog/archives" class="block py-3 rounded-md">Archives</a>
+            <a href="/blog/archives"
+              class="flex items-center justify-between p-3 text-base font-bold bg-primary/10 border-primary/20 hover:bg-card border rounded-lg group hover:shadow">
+              <span class="flex-1 ms-3 whitespace-nowrap">Archives</span>
+              <i class="bi bi-caret-right"></i>
+            </a>
           </li>
           
         </ul>
