@@ -4,7 +4,14 @@ permalink: /tags
 title: Tags
 ---
 
-<div class="content">
+<div id="tags" class="content pt-16 sm:pt-20">
+  {% include header-title.html title='Blog Tags' %}
+
+  {% if site.tags == empty %}
+  <div class="flex justify-center">
+    {% include alert.html type="info" message="No Tags Available" %}
+  </div>
+  {% else %}
 
   {% include nav-button.html data=site.tags %}
 
@@ -68,6 +75,7 @@ title: Tags
     </section>
     {% endfor %}
   </div>
+  {% endif %}
 </div>
 
 <script src="{{site.baseurl}}/assets/js/nav-btn.js"></script>

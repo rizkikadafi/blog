@@ -4,9 +4,17 @@ layout: blog
 
 {% assign posts = site.posts | where: "is_series", true | where: "series_title", page.series_title | sort:
 "series_order" %}
+{% assign message = "No " | append: page.title | append: " Available" %}
 
 <div class="pt-16 sm:pt-20">
   {% include header-title.html title=page.title %}
+
+  {% if posts == empty %}
+  <div class="flex justify-center">
+    {% include alert.html type="info" message=message %}
+  </div>
+  {% else %}
+
   <div class="w-full bg-card border-primary/10 border-2 text-sm font-medium rounded-lg [&_a:last-child]:border-0">
     {% for post in posts%}
     <a href="{{ site.baseurl }}{{ post.url }}"
@@ -15,4 +23,5 @@ layout: blog
     </a>
     {% endfor %}
   </div>
+  {% endif %}
 </div>

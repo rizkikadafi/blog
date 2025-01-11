@@ -16,7 +16,7 @@ title: Dashboard
           </p>
         </div>
 
-        {% include link-btn.html href=link_next blank=true text="About Me" %}
+        {% include link-btn.html href="https://rizkikadafi.github.io/" blank=true text="About Me" %}
       </div>
     </section>
     <!-- end Dashboard -->
@@ -31,7 +31,7 @@ title: Dashboard
 
         <div class="swiper category-swiper mx-auto sm:w-[95%]">
           <div class="swiper-wrapper">
-            {% for category in site.data.blog-category %}
+            {% for category in site.data.blog-category limit: 5 %}
             {% include blog-category-card.html category=category %}
             {% endfor %}
           </div>
@@ -59,6 +59,11 @@ title: Dashboard
     <!-- Recent Posts -->
     <section id='recent' class="pt-16 sm:pt-20">
       {% include header-title.html title='Recent Posts' %}
+      {% if site.posts == empty %}
+      <div class="flex justify-center">
+        {% include alert.html type="info" message="No Posts Available" %}
+      </div>
+      {% else %}
       <div class="mt-5 flex flex-col sm:flex-row gap-5 sm:*:w-1/2">
         <div class="flex flex-col gap-5">
           {% for post in site.posts limit: 3 %}
@@ -71,6 +76,7 @@ title: Dashboard
           {% endfor %}
         </div>
       </div>
+      {% endif %}
     </section>
     <!-- end Recent Posts -->
 

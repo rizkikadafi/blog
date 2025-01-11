@@ -4,7 +4,14 @@ permalink: /categories
 title: Categories
 ---
 
-<div id="categories" class="content">
+<div id="categories" class="content pt-16 sm:pt-20">
+  {% include header-title.html title='Blog Categories' %}
+
+  {% if site.categories == empty %}
+  <div class="flex justify-center">
+    {% include alert.html type="info" message="No Categories Available" %}
+  </div>
+  {% else %}
 
   {% include nav-button.html data=site.categories %}
 
@@ -70,6 +77,8 @@ title: Categories
     </section>
     {% endfor %}
   </div>
+  {% endif %}
+
 </div>
 
 <script src="{{site.baseurl}}/assets/js/nav-btn.js"></script>

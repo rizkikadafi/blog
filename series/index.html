@@ -15,15 +15,18 @@ title: Series
 
 <div class="content">
   <section id='series' class="pt-16 sm:pt-20">
-
     {% include header-title.html title='Blog Series' %}
-    {% for series in site.data.blog-series %}
-    {% endfor %}
 
+    {% if series == empty %}
+    <div class="flex justify-center">
+      {% include alert.html type="info" message="No Blog Series Available" %}
+    </div>
+    {% else %}
     <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {% for series_name in series %}
       {% include blog-series-card.html series_name=series_name %}
       {% endfor %}
     </div>
+    {% endif %}
   </section>
 </div>
