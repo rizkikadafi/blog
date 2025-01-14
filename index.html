@@ -3,12 +3,12 @@ layout: blog
 title: Dashboard
 ---
 
-<div class="content">
-  <div class="w-full">
+<div id="dashboard" class="content">
+  <div class="w-full *:mt-16 md:*:mt-20">
 
     <!-- Dashboard -->
-    <section id="dashboard" class="pt-12 sm:pt-20 px-8 sm:px-14 flex flex-col justify-center items-center">
-      <div class="h-full w-full flex flex-col justify-center items-center pt-12">
+    <section id="hero" class="px-8 sm:px-14 flex flex-col justify-center items-center">
+      <div class="h-full w-full flex flex-col justify-center items-center">
         <div class="text-center">
           <h1 class="font-bold text-xl sm:text-2xl lg:text-3xl">Welcome to Kadafi's Blog</h1>
           <p class="text-xs sm:text-base text-center my-3 sm:my-4">
@@ -22,7 +22,7 @@ title: Dashboard
     <!-- end Dashboard -->
 
     <!-- Categories -->
-    <section id="categories" class="pt-16 md:pt-20">
+    <section id="categories">
       <div class="mx-auto bg-card border-primary/10 border-2 py-5 px-5 sm:px-0 rounded-md shadow-2xl">
 
         <div class="mb-5 text-center">
@@ -32,7 +32,7 @@ title: Dashboard
         <div class="swiper category-swiper mx-auto sm:w-[95%]">
           <div class="swiper-wrapper">
             {% for category in site.data.blog-category limit: 5 %}
-            {% include blog-category-card.html category=category %}
+            {% include blog-category-swiper.html category=category %}
             {% endfor %}
           </div>
         </div>
@@ -57,7 +57,7 @@ title: Dashboard
     <!-- end Categories -->
 
     <!-- Recent Posts -->
-    <section id='recent' class="pt-16 sm:pt-20">
+    <section id='recent'>
       {% include header-title.html title='Recent Posts' %}
       {% if site.posts == empty %}
       <div class="flex justify-center">
@@ -81,7 +81,7 @@ title: Dashboard
     <!-- end Recent Posts -->
 
     <!-- Post Series -->
-    <section id="series" class="pt-16 md:pt-20">
+    <section id="series">
       <div class="mx-auto bg-card border-primary/10 border-2 py-5 px-5 sm:px-0 rounded-md shadow-2xl">
 
         <div class="mb-5 text-center">

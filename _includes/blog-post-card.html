@@ -21,7 +21,7 @@
     {% endfor %}
 
     <p class="text-sm text-justify mt-2">
-      {{ include.post.excerpt }}
+      {{ include.post.excerpt | truncatewords: 30 }}
     </p>
 
     <a href="{{site.baseurl}}{{ include.post.url }}"

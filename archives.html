@@ -5,6 +5,17 @@ title: Archives
 ---
 <div class="content">
   {% include header-title.html title=page.title %}
+
+  {% if site.posts == empty %}
+  <div class="flex justify-center">
+    {% include alert.html type="info" message="No Archives Available" %}
+  </div>
+
+  {% assign post_assets = site.static_files | where: "post_asset", true %}
+  {% for pa in post_assets %}
+  {{ pa.post_assets }}
+  {% endfor %}
+  {% else %}
   {% for post in site.posts %}
 
   {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
@@ -32,4 +43,5 @@ title: Archives
 
     {% endfor %}
 
+    {% endif %}
 </div>

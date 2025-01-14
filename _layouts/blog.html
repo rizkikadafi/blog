@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 
 <head>
   <meta charset="UTF-8">
@@ -22,7 +22,9 @@
   {% include navbar.html %}
 
   <div class="px-5 sm:px-8 min-h-svh flex flex-col justify-between">
-    {{ content }}
+    <div class="pt-16 lg:pt-20">
+      {{ content }}
+    </div>
 
     {% include contact-footer.html %}
   </div>

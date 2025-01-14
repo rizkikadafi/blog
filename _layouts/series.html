@@ -6,7 +6,7 @@ layout: blog
 "series_order" %}
 {% assign message = "No " | append: page.title | append: " Available" %}
 
-<div class="pt-16 sm:pt-20">
+<div>
   {% include header-title.html title=page.title %}
 
   {% if posts == empty %}
@@ -15,13 +15,18 @@ layout: blog
   </div>
   {% else %}
 
+  {% if content == empty %}
   <div class="w-full bg-card border-primary/10 border-2 text-sm font-medium rounded-lg [&_a:last-child]:border-0">
-    {% for post in posts%}
+    {% for post in posts %}
     <a href="{{ site.baseurl }}{{ post.url }}"
       class="transition-colors hover:bg-muted/50 block w-full px-4 py-2 border-primary/10 border-b-2 cursor-pointer">
       {{ post.series_order }}. {{ post.title }}
     </a>
     {% endfor %}
   </div>
+  {% else %}
+  {{ content }}
+  {% endif %}
+
   {% endif %}
 </div>

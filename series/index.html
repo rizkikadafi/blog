@@ -14,11 +14,11 @@ title: Series
 {% endfor %}
 
 <div class="content">
-  <section id='series' class="pt-16 sm:pt-20">
+  <section id='series'>
     {% include header-title.html title='Blog Series' %}
 
     {% if series == empty %}
-    <div class="flex justify-center">
+    <div class=" flex justify-center">
       {% include alert.html type="info" message="No Blog Series Available" %}
     </div>
     {% else %}

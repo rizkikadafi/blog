@@ -1,11 +1,11 @@
-- name: devops
-  desc: Blog Series related to devops implementation 
-  img: linux.jpeg
+- name: digital-system
+  desc: Blog Series related digital system 
+  img: digital-system.jpeg
 - name: calculus
   desc: Blog Series related to Calculus concepts
   img: linux.jpeg
-- name: web
-  desc: Blog Series related to web development
+- name: digital-system
+  desc: Blog Series related to Digital System
   img: linux.jpeg
 - name: linux
   desc: Blog Series related to the use of the Linux operating system 

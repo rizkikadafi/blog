@@ -8,7 +8,7 @@
   <div class="flex justify-between items-center h-full">
     <a href="{{site.baseurl}}/" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
     <div class="flex">
-      <ul class="hidden sm:flex *:mx-5">
+      <ul class="hidden md:flex *:mx-5">
         {% for item in site.data.blog-navigation %}
         <li class="hover:underline hover:underline-offset-4"><a href="{{site.baseurl}}/{{item.link}}">{{item.name}}</a>
         </li>
@@ -17,7 +17,7 @@
       <div class="*:cursor-pointer">
         <i id="dark-mode" class="bi bi-moon-stars-fill mr-2 text-lg dark:hidden"></i>
         <i id="light-mode" class="bi bi-brightness-high-fill mr-2 text-xl hidden dark:inline-block"></i>
-        <i data-modal-target="default-modal" data-modal-toggle="default-modal" class="bi bi-list sm:hidden text-xl"></i>
+        <i data-modal-target="default-modal" data-modal-toggle="default-modal" class="bi bi-list md:hidden text-xl"></i>
       </div>
     </div>
   </div>

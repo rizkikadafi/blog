@@ -1,3 +1,6 @@
+- name: lower-level
+  desc: Posts related to lower level system in computer 
+  img: lower-level.jpeg
 - name: math
   desc: Posts related to mathematical concepts in computer science 
   img: math.jpeg
@@ -10,6 +13,3 @@
 - name: linux
   desc: Posts related to the use of the Linux operating system 
   img: linux.jpeg
-- name: general
-  desc: Posts related to general topic and sharing my opinion 
-  img: general.jpeg

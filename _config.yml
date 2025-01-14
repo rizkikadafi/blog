@@ -16,6 +16,16 @@ defaults:
       type: posts
     values:
       permalink: /:categories/:title
+      author: "Rizki Kadafi"
+      layout: post
+  - scope:
+      path: '/assets/image/post-assets'
+    values:
+      post_asset: true
+  - scope:
+      path: ""
+    values:
+      toc: true
 
 postcss:
   cache: false
@@ -23,6 +33,7 @@ postcss:
 plugins:
   - jekyll-postcss
   - jekyll-figure
+  - jekyll-toc
 
 jekyll-figure:
   paragraphs: false
