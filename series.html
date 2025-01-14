@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 
 <head>
   <meta charset="UTF-8">
@@ -57,7 +57,7 @@
         <ul class="my-4 space-y-3">
           
           <li>
-            <a href="/blog/#dashboard"
+            <a href="/blog/"
               class="flex items-center justify-between p-3 text-base font-bold bg-primary/10 border-primary/20 hover:bg-card border rounded-lg group hover:shadow">
               <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
               <i class="bi bi-caret-right"></i>
@@ -112,9 +112,9 @@
   <div class="flex justify-between items-center h-full">
     <a href="/blog/" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
     <div class="flex">
-      <ul class="hidden sm:flex *:mx-5">
+      <ul class="hidden md:flex *:mx-5">
         
-        <li class="hover:underline hover:underline-offset-4"><a href="/blog/#dashboard">Dashboard</a>
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/">Dashboard</a>
         </li>
         
         <li class="hover:underline hover:underline-offset-4"><a href="/blog/categories">Categories</a>
@@ -133,7 +133,7 @@
       <div class="*:cursor-pointer">
         <i id="dark-mode" class="bi bi-moon-stars-fill mr-2 text-lg dark:hidden"></i>
         <i id="light-mode" class="bi bi-brightness-high-fill mr-2 text-xl hidden dark:inline-block"></i>
-        <i data-modal-target="default-modal" data-modal-toggle="default-modal" class="bi bi-list sm:hidden text-xl"></i>
+        <i data-modal-target="default-modal" data-modal-toggle="default-modal" class="bi bi-list md:hidden text-xl"></i>
       </div>
     </div>
   </div>
@@ -141,14 +141,15 @@
 
 
   <div class="px-5 sm:px-8 min-h-svh flex flex-col justify-between">
-    
+    <div class="pt-16 lg:pt-20">
+      
 
 
 
 
 
 <div class="content">
-  <section id='series' class="pt-16 sm:pt-20">
+  <section id='series'>
     <div class="mb-5 text-center not-prose">
   <h2
     class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-foreground">
@@ -159,29 +160,42 @@
 
 
     
-    <div class="flex justify-center">
+    <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       
-<div
-  class="flex items-center p-4 mb-4 text-sm text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800"
-  role="alert">
-  <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-    fill="currentColor" viewBox="0 0 20 20">
-    <path
-      d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-  </svg>
-  <span class="sr-only">Info</span>
-  <div>
-    No Blog Series Available
-  </div>
+      
+<div class="series-card">
+  <a href="/blog/series/digital-system" class="text-gray-200">
+    <div class="relative">
+      <img src="/blog/assets/image/blog-series/digital-system.jpeg" alt="digital-system"
+        class="rounded-md w-full">
+      <div
+        class="absolute w-full h-full top-0 left-0 rounded-md bg-gradient-to-t from-black flex flex-col justify-end p-3">
+        <div class="mb-2">
+          <h3 class="font-bold text-lg">
+            
+            
+            Digital
+            
+            System
+            
+          </h3>
+          <p class="text-sm">Blog Series related digital system</p>
+        </div>
+
+        
+        <span class="text-xs">1 articles</span>
+      </div>
+    </div>
+  </a>
 </div>
 
-
-
+      
     </div>
     
   </section>
 </div>
 
+    </div>
 
     <section id="contact" class="mt-10 not-prose">
   <div class="mb-5 text-center not-prose">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 
 <head>
   <meta charset="UTF-8">
@@ -57,7 +57,7 @@
         <ul class="my-4 space-y-3">
           
           <li>
-            <a href="/blog/#dashboard"
+            <a href="/blog/"
               class="flex items-center justify-between p-3 text-base font-bold bg-primary/10 border-primary/20 hover:bg-card border rounded-lg group hover:shadow">
               <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
               <i class="bi bi-caret-right"></i>
@@ -112,9 +112,9 @@
   <div class="flex justify-between items-center h-full">
     <a href="/blog/" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
     <div class="flex">
-      <ul class="hidden sm:flex *:mx-5">
+      <ul class="hidden md:flex *:mx-5">
         
-        <li class="hover:underline hover:underline-offset-4"><a href="/blog/#dashboard">Dashboard</a>
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/">Dashboard</a>
         </li>
         
         <li class="hover:underline hover:underline-offset-4"><a href="/blog/categories">Categories</a>
@@ -133,7 +133,7 @@
       <div class="*:cursor-pointer">
         <i id="dark-mode" class="bi bi-moon-stars-fill mr-2 text-lg dark:hidden"></i>
         <i id="light-mode" class="bi bi-brightness-high-fill mr-2 text-xl hidden dark:inline-block"></i>
-        <i data-modal-target="default-modal" data-modal-toggle="default-modal" class="bi bi-list sm:hidden text-xl"></i>
+        <i data-modal-target="default-modal" data-modal-toggle="default-modal" class="bi bi-list md:hidden text-xl"></i>
       </div>
     </div>
   </div>
@@ -141,12 +141,13 @@
 
 
   <div class="px-5 sm:px-8 min-h-svh flex flex-col justify-between">
-    <div class="content">
-  <div class="w-full">
+    <div class="pt-16 lg:pt-20">
+      <div id="dashboard" class="content">
+  <div class="w-full *:mt-16 md:*:mt-20">
 
     <!-- Dashboard -->
-    <section id="dashboard" class="pt-12 sm:pt-20 px-8 sm:px-14 flex flex-col justify-center items-center">
-      <div class="h-full w-full flex flex-col justify-center items-center pt-12">
+    <section id="hero" class="px-8 sm:px-14 flex flex-col justify-center items-center">
+      <div class="h-full w-full flex flex-col justify-center items-center">
         <div class="text-center">
           <h1 class="font-bold text-xl sm:text-2xl lg:text-3xl">Welcome to Kadafi's Blog</h1>
           <p class="text-xs sm:text-base text-center my-3 sm:my-4">
@@ -166,7 +167,7 @@
     <!-- end Dashboard -->
 
     <!-- Categories -->
-    <section id="categories" class="pt-16 md:pt-20">
+    <section id="categories">
       <div class="mx-auto bg-card border-primary/10 border-2 py-5 px-5 sm:px-0 rounded-md shadow-2xl">
 
         <div class="mb-5 text-center">
@@ -184,10 +185,35 @@
           <div class="swiper-wrapper">
             
             <div class="swiper-slide">
-  <a href="/blog/categories?data=math">
+  <a href="/blog/categories?data=lower-level" class="text-gray-200">
+    <div class="relative">
+      <img src="/blog/assets/image/blog-category/lower-level.jpeg" alt="lower-level.jpeg"
+        class="rounded-md w-full">
+      <div
+        class="absolute w-full h-full top-0 left-0 rounded-md bg-gradient-to-t from-black flex flex-col justify-end p-3">
+        <div class="mb-2">
+          <h3 class="font-bold text-lg">
+            
+            
+            Lower
+            
+            Level
+            
+          </h3>
+          <p class="text-sm">Posts related to lower level system in computer</p>
+        </div>
+        <span class="text-xs">1 articles</span>
+      </div>
+    </div>
+  </a>
+</div>
+
+            
+            <div class="swiper-slide">
+  <a href="/blog/categories?data=math" class="text-gray-200">
     <div class="relative">
       <img src="/blog/assets/image/blog-category/math.jpeg" alt="math.jpeg"
-        class="rounded-md">
+        class="rounded-md w-full">
       <div
         class="absolute w-full h-full top-0 left-0 rounded-md bg-gradient-to-t from-black flex flex-col justify-end p-3">
         <div class="mb-2">
@@ -207,10 +233,10 @@
 
             
             <div class="swiper-slide">
-  <a href="/blog/categories?data=programming">
+  <a href="/blog/categories?data=programming" class="text-gray-200">
     <div class="relative">
       <img src="/blog/assets/image/blog-category/programming.jpeg" alt="programming.jpeg"
-        class="rounded-md">
+        class="rounded-md w-full">
       <div
         class="absolute w-full h-full top-0 left-0 rounded-md bg-gradient-to-t from-black flex flex-col justify-end p-3">
         <div class="mb-2">
@@ -230,10 +256,10 @@
 
             
             <div class="swiper-slide">
-  <a href="/blog/categories?data=web">
+  <a href="/blog/categories?data=web" class="text-gray-200">
     <div class="relative">
       <img src="/blog/assets/image/blog-category/web.jpeg" alt="web.jpeg"
-        class="rounded-md">
+        class="rounded-md w-full">
       <div
         class="absolute w-full h-full top-0 left-0 rounded-md bg-gradient-to-t from-black flex flex-col justify-end p-3">
         <div class="mb-2">
@@ -253,10 +279,10 @@
 
             
             <div class="swiper-slide">
-  <a href="/blog/categories?data=linux">
+  <a href="/blog/categories?data=linux" class="text-gray-200">
     <div class="relative">
       <img src="/blog/assets/image/blog-category/linux.jpeg" alt="linux.jpeg"
-        class="rounded-md">
+        class="rounded-md w-full">
       <div
         class="absolute w-full h-full top-0 left-0 rounded-md bg-gradient-to-t from-black flex flex-col justify-end p-3">
         <div class="mb-2">
@@ -267,29 +293,6 @@
             
           </h3>
           <p class="text-sm">Posts related to the use of the Linux operating system</p>
-        </div>
-        <span class="text-xs">0 articles</span>
-      </div>
-    </div>
-  </a>
-</div>
-
-            
-            <div class="swiper-slide">
-  <a href="/blog/categories?data=general">
-    <div class="relative">
-      <img src="/blog/assets/image/blog-category/general.jpeg" alt="general.jpeg"
-        class="rounded-md">
-      <div
-        class="absolute w-full h-full top-0 left-0 rounded-md bg-gradient-to-t from-black flex flex-col justify-end p-3">
-        <div class="mb-2">
-          <h3 class="font-bold text-lg">
-            
-            
-            General
-            
-          </h3>
-          <p class="text-sm">Posts related to general topic and sharing my opinion</p>
         </div>
         <span class="text-xs">0 articles</span>
       </div>
@@ -321,7 +324,7 @@
     <!-- end Categories -->
 
     <!-- Recent Posts -->
-    <section id='recent' class="pt-16 sm:pt-20">
+    <section id='recent'>
       <div class="mb-5 text-center not-prose">
   <h2
     class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-foreground">
@@ -331,31 +334,58 @@
 </div>
 
       
-      <div class="flex justify-center">
-        
-<div
-  class="flex items-center p-4 mb-4 text-sm text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800"
-  role="alert">
-  <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-    fill="currentColor" viewBox="0 0 20 20">
-    <path
-      d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-  </svg>
-  <span class="sr-only">Info</span>
-  <div>
-    No Posts Available
+      <div class="mt-5 flex flex-col sm:flex-row gap-5 sm:*:w-1/2">
+        <div class="flex flex-col gap-5">
+          
+          <div
+  class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
+
+  
+
+  <div class="mt-3">
+    <a href="/blog/lower-level/digital-system-introductory">
+      <h2 class="text-xl font-bold">Digital System Introductory</h2>
+    </a>
+
+    <div>
+      <span class="text-sm">Rizki Kadafi - 14 Jan 2025</span>
+    </div>
+
+    
+    <a href="/blog/tags?data=digital-system"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">digital-system</a>
+    
+    <a href="/blog/tags?data=analog"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">analog</a>
+    
+    <a href="/blog/tags?data=digital"
+      class="inline-block mr-2 mt-2 text-sm w-fit bg-secondary rounded-xl px-3 py-[2px]">digital</a>
+    
+
+    <p class="text-sm text-justify mt-2">
+      <p>Do you wonder what are the building blocks that made up the complex system like a computer? The evolution of computers is nothing short of extraordinary, starting from simple mechanical...
+    </p>
+
+    <a href="/blog/lower-level/digital-system-introductory"
+      class="group w-fit mt-3 flex justify-start items-center text-sm hover:underline hover:text-primary">
+      <span class="block mr-2">Read more</span>
+      <i class="bi bi-arrow-right block mt-[4px] group-hover:translate-x-2 transition-transform"></i>
+    </a>
   </div>
 </div>
 
-
-
+          
+        </div>
+        <div class="flex flex-col gap-5">
+          
+        </div>
       </div>
       
     </section>
     <!-- end Recent Posts -->
 
     <!-- Post Series -->
-    <section id="series" class="pt-16 md:pt-20">
+    <section id="series">
       <div class="mx-auto bg-card border-primary/10 border-2 py-5 px-5 sm:px-0 rounded-md shadow-2xl">
 
         <div class="mb-5 text-center">
@@ -373,9 +403,9 @@
           <div class="swiper-wrapper">
             
             <div class="swiper-slide">
-  <a href="/blog/series/devops">
+  <a href="/blog/series/digital-system" class="text-gray-200">
     <div class="relative">
-      <img src="/blog/assets/image/blog-series/linux.jpeg" alt="linux.jpeg"
+      <img src="/blog/assets/image/blog-series/digital-system.jpeg" alt="digital-system.jpeg"
         class="rounded-md">
       <div
         class="absolute w-full h-full top-0 left-0 rounded-md bg-gradient-to-t from-black flex flex-col justify-end p-3">
@@ -383,14 +413,16 @@
           <h3 class="font-bold text-lg">
             
             
-            Devops
+            Digital
+            
+            System
             
           </h3>
-          <p class="text-sm">Blog Series related to devops implementation</p>
+          <p class="text-sm">Blog Series related digital system</p>
         </div>
 
         
-        <span class="text-xs">0 articles</span>
+        <span class="text-xs">1 articles</span>
       </div>
     </div>
   </a>
@@ -398,7 +430,7 @@
 
             
             <div class="swiper-slide">
-  <a href="/blog/series/calculus">
+  <a href="/blog/series/calculus" class="text-gray-200">
     <div class="relative">
       <img src="/blog/assets/image/blog-series/linux.jpeg" alt="linux.jpeg"
         class="rounded-md">
@@ -423,7 +455,7 @@
 
             
             <div class="swiper-slide">
-  <a href="/blog/series/web">
+  <a href="/blog/series/digital-system" class="text-gray-200">
     <div class="relative">
       <img src="/blog/assets/image/blog-series/linux.jpeg" alt="linux.jpeg"
         class="rounded-md">
@@ -433,14 +465,16 @@
           <h3 class="font-bold text-lg">
             
             
-            Web
+            Digital
+            
+            System
             
           </h3>
-          <p class="text-sm">Blog Series related to web development</p>
+          <p class="text-sm">Blog Series related to Digital System</p>
         </div>
 
         
-        <span class="text-xs">0 articles</span>
+        <span class="text-xs">1 articles</span>
       </div>
     </div>
   </a>
@@ -448,7 +482,7 @@
 
             
             <div class="swiper-slide">
-  <a href="/blog/series/linux">
+  <a href="/blog/series/linux" class="text-gray-200">
     <div class="relative">
       <img src="/blog/assets/image/blog-series/linux.jpeg" alt="linux.jpeg"
         class="rounded-md">
@@ -473,7 +507,7 @@
 
             
             <div class="swiper-slide">
-  <a href="/blog/series/general">
+  <a href="/blog/series/general" class="text-gray-200">
     <div class="relative">
       <img src="/blog/assets/image/blog-series/linux.jpeg" alt="linux.jpeg"
         class="rounded-md">
@@ -522,6 +556,7 @@
   </div>
 </div>
 
+    </div>
 
     <section id="contact" class="mt-10 not-prose">
   <div class="mb-5 text-center not-prose">
