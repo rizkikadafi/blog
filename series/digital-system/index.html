@@ -3,3 +3,8 @@ layout: series
 title: Digital System Series
 series_title: digital-system
 ---
+
+{% assign posts = site.posts | where: "is_series", true | where: "series_title", page.series_title | sort:
+"series_order" %}
+
+{% include link-list-group.html data=posts chapters="Introductory Concepts:1" %}

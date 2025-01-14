@@ -1,8 +1,32 @@
+{% if include.chapters %}
+
+{% assign chapters = include.chapters | split: "," %}
+{% for chapter in chapters %}
+{% assign chapter_data = chapter | split: ":" %}
+{% assign chapter_title = chapter_data[0] %}
+{% assign number_of_post = chapter_data[1] %}
+
+<h2 class="text-xl font-semibold my-5">{{ chapter_title }}</h2>
+<div class="w-full bg-card border-primary/10 border-2 text-sm font-medium rounded-lg [&_a:last-child]:border-0">
+  {% for post in include.data limit: number_of_post offset: continue %}
+  <a href="{{ site.baseurl }}{{ post.url }}"
+    class="transition-colors hover:bg-muted/50 block w-full px-4 py-2 border-primary/10 border-b-2 cursor-pointer">
+    {{ post.title }}
+  </a>
+  {% endfor %}
+</div>
+
+{% endfor %}
+
+{% else %}
+
 <div class="w-full bg-card border-primary/10 border-2 text-sm font-medium rounded-lg [&_a:last-child]:border-0">
   {% for post in include.data %}
   <a href="{{ site.baseurl }}{{ post.url }}"
     class="transition-colors hover:bg-muted/50 block w-full px-4 py-2 border-primary/10 border-b-2 cursor-pointer">
-    {{ post.series_order }}. {{ post.title }}
+    {{ post.title }}
   </a>
   {% endfor %}
 </div>
+
+{% endif %}
