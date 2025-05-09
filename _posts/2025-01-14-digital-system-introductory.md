@@ -1,4 +1,6 @@
 ---
+title:
+thumbnail:
 categories: lower-level
 tags: digital-system analog digital
 is_series: true

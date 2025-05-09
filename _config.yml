@@ -3,6 +3,7 @@ tagline: Blog about computer science and mathematics
 description: A blog dedicated to share my knowledge and opinion related to computer science and mathematics
 author: Muhamad Rizki Kadafi
 logo: /assets/image/favicon.png
+post_assets_path: /assets/post-assets/
 social:
   name: Muhamad Rizki Kadafi
   links:
@@ -18,10 +19,6 @@ defaults:
       permalink: /:categories/:title
       author: "Rizki Kadafi"
       layout: post
-  - scope:
-      path: '/assets/image/post-assets'
-    values:
-      post_asset: true
   - scope:
       path: ""
     values:

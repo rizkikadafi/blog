@@ -2,8 +2,8 @@
 layout: blog
 ---
 
-<div class="prose prose-p:text-black dark:prose-p:text-white dark:prose-invert prose-h1:mb-2 prose-h1:text-3xl sm:prose-h1:text-5xl prose-figure:md:w-2/3 
-    prose-figure:mx-auto prose-img:rounded-md prose-img:object-cover prose-img:object-center max-w-none px-2 md:px-0 text-slate-800 
+<div class="prose prose-p:text-black dark:prose-p:text-white dark:prose-invert prose-h1:mb-2 prose-h1:text-3xl sm:prose-h1:text-5xl 
+  prose-figure:md:w-2/3 prose-figure:mx-auto prose-img:rounded-md prose-img:object-cover prose-img:object-center max-w-none px-2 md:px-0 text-slate-800 
     dark:text-white mt-5">
   <div class="md:mx-8">
     <h1>{{page.title}}</h1>
@@ -21,7 +21,8 @@ layout: blog
     </div>
 
     {% if page.thumbnail %}
-    <img src="{{site.baseurl}}{{ page.thumbnail }}" alt="{{ page.thumbnail }}"
+    {% assign thumbnail_path = site.post_assets_path | append: '/images/' | append: page.thumbnail %}
+    <img src="{{site.baseurl}}{{ thumbnail_path }}" alt="{{ page.thumbnail }}"
       class="not-prose mx-auto my-8 rounded-md object-cover object-center h-52 sm:h-96 w-full cursor-zoom-in md:w-4/5"
       data-modal-target="thumbnail-modal" data-modal-toggle="thumbnail-modal">
 
@@ -29,7 +30,7 @@ layout: blog
       class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
       <div class="relative p-4 w-full max-w-5xl max-h-full">
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-          <img src="{{site.baseurl}}{{ page.thumbnail }}" alt="{{ page.thumbnail }}"
+          <img src="{{site.baseurl}}{{ thumbnail_path }}" alt="{{ page.thumbnail }}"
             class="not-prose rounded-md w-full">
         </div>
       </div>
@@ -37,11 +38,11 @@ layout: blog
 
     {% endif %}
 
-    <div id="table-of-contents"
-      class="lg:w-2/6 lg:float-right lg:ml-8 mb-3 bg-card border-primary/10 border-2 p-4 rounded-md">
-      <span class="text-xl font-semibold">Table of Content</span>
-      {% toc %}
-    </div>
+    <!-- <div id="table-of-contents" -->
+    <!--   class="lg:w-2/6 lg:float-right lg:ml-8 mb-3 bg-card border-primary/10 border-2 p-4 rounded-md"> -->
+    <!--   <span class="text-xl font-semibold">Table of Content</span> -->
+    <!--   {% toc %} -->
+    <!-- </div> -->
 
     {{ content }}
 

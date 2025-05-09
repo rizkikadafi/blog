@@ -2,7 +2,8 @@
   class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-xl transition-transform hover:-translate-y-2 duration-200">
 
   {% if include.post.thumbnail %}
-  <img src="{{site.baseurl}}{{ include.post.thumbnail }}" alt="{{ include.post.thumbnail }}"
+  {% assign thumbnail_path = site.post_assets_path | append: '/images/' | append: include.post.thumbnail %}
+  <img src="{{site.baseurl}}{{ thumbnail_path }}" alt="{{ include.post.thumbnail }}"
     class="w-full h-52 sm:h-64 rounded-md object-cover">
   {% endif %}
 

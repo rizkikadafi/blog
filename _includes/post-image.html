@@ -1,0 +1,5 @@
+{% figure caption:"{{ include.caption }}" label:{{ include.label }} %}
+
+{% assign image_path = site.post_assets_path | append: '/images/' | append: include.image %}
+<img src="{{site.baseurl}}{{ image_path }}" alt="{{ include.image }}">
+{% endfigure %}
