@@ -1,0 +1,10 @@
+---
+layout: series
+title: Operating System Series
+series_title: operating-system
+---
+
+{% assign posts = site.posts | where: "is_series", true | where: "series_title", page.series_title | sort:
+"series_order" %}
+
+{% include link-list-group.html data=posts %}

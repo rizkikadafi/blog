@@ -1,6 +1,9 @@
 - name: digital-system
   desc: Blog Series related digital system 
   img: digital-system.jpeg
+- name: operating-system
+  desc: Blog Series related operating system 
+  img: operating-system.jpeg
 - name: calculus
   desc: Blog Series related to Calculus concepts
   img: linux.jpeg
