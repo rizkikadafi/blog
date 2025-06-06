@@ -82,5 +82,19 @@ series_title: digital-system
 {% assign posts = site.posts | where: "is_series", true | where: "series_title", page.series_title | sort:
 "series_order" %}
 
-{% include link-list-group.html data=posts chapters="Introductory Concepts:1" %}
+{% include link-list-group.html data=posts %}
 ```
+to split posts into different chapter, add `chapters` arguments to link-list-group
+```md
+{% include link-list-group.html data=posts chapters="{Chapter name}:{the number of post in this chapter}" %}
+```
+note: each chapter will take posts sequentially.
+
+**example**
+```md
+{% include link-list-group.html data=posts chapters="Introductory Concept:5" %}
+{% include link-list-group.html data=posts chapters="Chapter 1:3" %}
+```
+it will create `Introductory Concept` with 5 posts, with posts that have `series_order` 1-5 in this series.
+And next Chapter will take posts that have `series_order` 6-8 in this series.
+
