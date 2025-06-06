@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>From Symbols to Logic: Speaking the Language of Circuits | Kadafi’s Blog</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="From Symbols to Logic: Speaking the Language of Circuits" />
+<meta name="author" content="Rizki Kadafi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In our last post, we met the three fundamental building blocks of the digital world: the AND, OR, and NOT gates. These simple components are the key to all digital decision-making. But rarely do they work alone. They are almost always combined to form more complex and useful circuits." />
+<meta property="og:description" content="In our last post, we met the three fundamental building blocks of the digital world: the AND, OR, and NOT gates. These simple components are the key to all digital decision-making. But rarely do they work alone. They are almost always combined to form more complex and useful circuits." />
+<link rel="canonical" href="/blog/lower-level/boolean-algebra" />
+<meta property="og:url" content="/blog/lower-level/boolean-algebra" />
+<meta property="og:site_name" content="Kadafi’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-01-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="From Symbols to Logic: Speaking the Language of Circuits" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Rizki Kadafi"},"dateModified":"2025-01-20T00:00:00+00:00","datePublished":"2025-01-20T00:00:00+00:00","description":"In our last post, we met the three fundamental building blocks of the digital world: the AND, OR, and NOT gates. These simple components are the key to all digital decision-making. But rarely do they work alone. They are almost always combined to form more complex and useful circuits.","headline":"From Symbols to Logic: Speaking the Language of Circuits","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/lower-level/boolean-algebra"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/blog/assets/image/favicon.png"},"name":"Rizki Kadafi"},"url":"/blog/lower-level/boolean-algebra"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/blog/assets/css/main.css" />
+  <link rel="shortcut icon" type="image/png" href="/blog/assets/image/favicon.png">
+
+  <title>From Symbols to Logic: Speaking the Language of Circuits</title>
+
+</head>
+
+<body class="transition duration-500 lg:px-24">
+  <div id="default-modal" tabindex="-1"
+  class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+  <div class="relative w-full max-w-2xl max-h-full">
+    <div class="relative bg-card border-primary/10 border-2 rounded-lg shadow">
+      <div class="flex items-center justify-between p-4 md:p-5 border-b-2 rounded-t border-primary/10">
+        <h3 class="text-lg font-semibold">
+          Blog Navigation
+        </h3>
+        <button type="button"
+          class="text-muted-foreground bg-transparent hover:bg-background rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center"
+          data-modal-toggle="default-modal">
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+      </div>
+      <div class="px-4">
+        <ul class="my-4 space-y-3">
+          
+          <li>
+            <a href="/blog/"
+              class="flex items-center justify-between p-3 text-base font-bold bg-primary/10 border-primary/20 hover:bg-card border rounded-lg group hover:shadow">
+              <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
+              <i class="bi bi-caret-right"></i>
+            </a>
+          </li>
+          
+          <li>
+            <a href="/blog/categories"
+              class="flex items-center justify-between p-3 text-base font-bold bg-primary/10 border-primary/20 hover:bg-card border rounded-lg group hover:shadow">
+              <span class="flex-1 ms-3 whitespace-nowrap">Categories</span>
+              <i class="bi bi-caret-right"></i>
+            </a>
+          </li>
+          
+          <li>
+            <a href="/blog/tags"
+              class="flex items-center justify-between p-3 text-base font-bold bg-primary/10 border-primary/20 hover:bg-card border rounded-lg group hover:shadow">
+              <span class="flex-1 ms-3 whitespace-nowrap">Tags</span>
+              <i class="bi bi-caret-right"></i>
+            </a>
+          </li>
+          
+          <li>
+            <a href="/blog/series"
+              class="flex items-center justify-between p-3 text-base font-bold bg-primary/10 border-primary/20 hover:bg-card border rounded-lg group hover:shadow">
+              <span class="flex-1 ms-3 whitespace-nowrap">Blog Series</span>
+              <i class="bi bi-caret-right"></i>
+            </a>
+          </li>
+          
+          <li>
+            <a href="/blog/archives"
+              class="flex items-center justify-between p-3 text-base font-bold bg-primary/10 border-primary/20 hover:bg-card border rounded-lg group hover:shadow">
+              <span class="flex-1 ms-3 whitespace-nowrap">Archives</span>
+              <i class="bi bi-caret-right"></i>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <nav id="blog-nav" class="px-10 lg:px-20 bg-primary/15 fixed right-0 left-0 top-0 z-10 py-3 lg:py-5 transition duration-300
+  after:duration-1000 ease-out after:block after:h-0.5 after:w-full after:origin-bottom-right after:scale-x-0 
+  after:bg-slate-500 after:transition-transform after:mt-3 after:absolute after:bottom-0 after:left-0 
+  after:rounded-md after:px-3">
+  <div class="hidden after:origin-bottom-left after:scale-x-100 backdrop-blur-md">
+
+  </div>
+  <div class="flex justify-between items-center h-full">
+    <a href="/blog/" class="font-medium text-md lg:text-xl">Kadafi's Blog</a>
+    <div class="flex">
+      <ul class="hidden md:flex *:mx-5">
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/">Dashboard</a>
+        </li>
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/categories">Categories</a>
+        </li>
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/tags">Tags</a>
+        </li>
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/series">Blog Series</a>
+        </li>
+        
+        <li class="hover:underline hover:underline-offset-4"><a href="/blog/archives">Archives</a>
+        </li>
+        
+      </ul>
+      <div class="*:cursor-pointer">
+        <i id="dark-mode" class="bi bi-moon-stars-fill mr-2 text-lg dark:hidden"></i>
+        <i id="light-mode" class="bi bi-brightness-high-fill mr-2 text-xl hidden dark:inline-block"></i>
+        <i data-modal-target="default-modal" data-modal-toggle="default-modal" class="bi bi-list md:hidden text-xl"></i>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+  <div class="px-5 sm:px-8 min-h-svh flex flex-col justify-between">
+    <div class="pt-16 lg:pt-20">
+      <div class="prose prose-p:text-black dark:prose-p:text-white dark:prose-invert prose-h1:mb-2 prose-h1:text-3xl sm:prose-h1:text-5xl 
+  prose-figure:md:w-2/3 prose-figure:mx-auto prose-img:rounded-md prose-img:object-cover prose-img:object-center max-w-none px-2 md:px-0 text-slate-800 
+    dark:text-white mt-5">
+  <div class="md:mx-8">
+    <h1>From Symbols to Logic: Speaking the Language of Circuits</h1>
+    <div class="text-slate-800 dark:text-white">
+      <div class="ml-1 sm:ml-0">
+        <span class="text-sm sm:text-base">20 Jan 2025 — By Rizki Kadafi</span>
+      </div>
+    </div>
+
+    <div class="not-prose my-3">
+      
+      <a href="/blog/tags?tag=digital-system"
+        class="inline-block mr-2 my-1 w-fit text-sm bg-slate-400/70 backdrop-blur-md rounded-xl px-4 py-[2px] dark:text-slate-200">digital-system</a>
+      
+      <a href="/blog/tags?tag=digital"
+        class="inline-block mr-2 my-1 w-fit text-sm bg-slate-400/70 backdrop-blur-md rounded-xl px-4 py-[2px] dark:text-slate-200">digital</a>
+      
+      <a href="/blog/tags?tag=boolean-algebra"
+        class="inline-block mr-2 my-1 w-fit text-sm bg-slate-400/70 backdrop-blur-md rounded-xl px-4 py-[2px] dark:text-slate-200">boolean-algebra</a>
+      
+    </div>
+
+    
+
+    <!-- <div id="table-of-contents" -->
+    <!--   class="lg:w-2/6 lg:float-right lg:ml-8 mb-3 bg-card border-primary/10 border-2 p-4 rounded-md"> -->
+    <!--   <span class="text-xl font-semibold">Table of Content</span> -->
+    <!--   <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#describing-a-logic-circuit-with-algebra">Describing a Logic Circuit with Algebra</a></li>
+<li class="toc-entry toc-h2"><a href="#evaluating-a-circuits-output">Evaluating a Circuit’s Output</a></li>
+<li class="toc-entry toc-h2"><a href="#drawing-a-circuit-from-a-boolean-expression">Drawing a Circuit from a Boolean Expression</a></li>
+</ul> -->
+    <!-- </div> -->
+
+    <p>In our last post, we met the three fundamental building blocks of the digital world: the AND, OR, and NOT 
+gates. These simple components are the key to all digital decision-making. But rarely do they work alone. 
+They are almost always combined to form more complex and useful circuits.</p>
+
+<p>So, how do we talk about these combinations? Drawing diagrams for every circuit is possible, but it can 
+get complicated fast. We need a more concise way to describe exactly what a logic circuit does. 
+This is where <strong>Boolean algebra</strong>, the language of logic, comes in.</p>
+
+<h2 id="describing-a-logic-circuit-with-algebra">Describing a Logic Circuit with Algebra</h2>
+<p>Think of a logic circuit diagram as a sentence. Boolean algebra is the tool we use to write that sentence down. 
+Any logic circuit, no matter how complex, can be described with a single Boolean expression.</p>
+
+<p>The symbols are straightforward:</p>
+<ul>
+  <li>AND is represented by a dot (<code class="language-plaintext highlighter-rouge">.</code>), just like multiplication. So, <code class="language-plaintext highlighter-rouge">A AND B</code> is written <code class="language-plaintext highlighter-rouge">A . B</code> or often just <code class="language-plaintext highlighter-rouge">AB</code>.</li>
+  <li>OR is represented by a plus sign (<code class="language-plaintext highlighter-rouge">+</code>). So, <code class="language-plaintext highlighter-rouge">A OR B</code> is written <code class="language-plaintext highlighter-rouge">A + B</code>.</li>
+  <li>NOT is represented by a bar over the variable. So, <code class="language-plaintext highlighter-rouge">NOT A</code> is written as <code class="language-plaintext highlighter-rouge">Ā</code>.</li>
+</ul>
+
+<figure>
+<img src="/blog/assets/post-assets//images/bool-expression.png" alt="bool-expression.png" />
+  <figcaption>(a) Logic circuit with its Boolean expression</figcaption>
+</figure>
+
+<p>To find its expression, we work from the inputs to the output:</p>
+<ol>
+  <li>The inputs <code class="language-plaintext highlighter-rouge">A</code> and <code class="language-plaintext highlighter-rouge">B</code> go into an AND gate. The output of that gate is <code class="language-plaintext highlighter-rouge">AB</code>.</li>
+  <li>That result (<code class="language-plaintext highlighter-rouge">AB</code>) then goes into an OR gate along with input <code class="language-plaintext highlighter-rouge">C</code>.</li>
+  <li>The final output, <code class="language-plaintext highlighter-rouge">x</code>, is therefore <code class="language-plaintext highlighter-rouge">x = AB + C</code>.</li>
+</ol>
+
+<figure>
+<img src="/blog/assets/post-assets//images/bool-expression-parentheses.png" alt="bool-expression-parentheses.png" />
+  <figcaption>(b) logic circuit whose expression requires parentheses.</figcaption>
+</figure>
+
+<p><strong>A Note on Parentheses and Precedence</strong>: What if the OR gate comes before the AND gate?.
+Just like in regular math, we use parentheses. The rule is: AND operations are performed before OR operations,
+unless parentheses tell you otherwise. The expression for the circuit below would be <code class="language-plaintext highlighter-rouge">x = (A + B)C</code>. 
+Without the parentheses, it would mean <code class="language-plaintext highlighter-rouge">A + BC</code>, which is a completely different circuit!</p>
+
+<h2 id="evaluating-a-circuits-output">Evaluating a Circuit’s Output</h2>
+<p>Once you have the Boolean expression, you have the power to predict the circuit’s output for any set of 
+inputs without ever building it! This is called evaluating the expression.</p>
+
+<p>Let’s use our first expression, <code class="language-plaintext highlighter-rouge">x = AB + C</code>. What will the output <code class="language-plaintext highlighter-rouge">x</code> be if <code class="language-plaintext highlighter-rouge">A=1</code>, <code class="language-plaintext highlighter-rouge">B=1</code>, and <code class="language-plaintext highlighter-rouge">C=0</code>?</p>
+<ol>
+  <li>Substitute the values: <code class="language-plaintext highlighter-rouge">x = (1 . 1) + 0</code></li>
+  <li>Perform the AND operation first: <code class="language-plaintext highlighter-rouge">1 . 1 = 1</code></li>
+  <li>Perform the OR operation: <code class="language-plaintext highlighter-rouge">x = 1 + 0</code></li>
+  <li>Find the result: <code class="language-plaintext highlighter-rouge">x = 1</code>
+So, for that specific input combination, the output will be HIGH (1). It’s that simple! 
+This process allows engineers to analyze and test circuits just by using algebra.</li>
+</ol>
+
+<h2 id="drawing-a-circuit-from-a-boolean-expression">Drawing a Circuit from a Boolean Expression</h2>
+<p>This is the reverse process, where we start with an expression and create the circuit diagram. 
+It’s like having a recipe and buying the ingredients.</p>
+
+<p>Let’s use the expression: <code class="language-plaintext highlighter-rouge">y = AC + B̄C + ĀBC</code></p>
+<ol>
+  <li><strong>Identify the final operation</strong>. The final operation here is the OR (<code class="language-plaintext highlighter-rouge">+</code>) that combines three terms. 
+This means the last gate in our circuit will be a three-input OR gate.</li>
+  <li><strong>Identify the inputs to the final gate</strong>. The inputs to this OR gate are the three terms: 
+<code class="language-plaintext highlighter-rouge">AC</code>, <code class="language-plaintext highlighter-rouge">B̄C</code>, and <code class="language-plaintext highlighter-rouge">ĀBC</code>.</li>
+  <li><strong>Create the logic for each input term</strong>. Each of these terms is an AND product. 
+This means we’ll need three separate AND gates to create them:
+    <ul>
+      <li>An AND gate with inputs <code class="language-plaintext highlighter-rouge">A</code> and <code class="language-plaintext highlighter-rouge">C</code> to produce <code class="language-plaintext highlighter-rouge">AC</code>.</li>
+      <li>An AND gate with inputs <code class="language-plaintext highlighter-rouge">B̄</code> and <code class="language-plaintext highlighter-rouge">C</code> to produce <code class="language-plaintext highlighter-rouge">B̄C</code>.</li>
+      <li>An AND gate with inputs <code class="language-plaintext highlighter-rouge">Ā</code>, <code class="language-plaintext highlighter-rouge">B</code>, and <code class="language-plaintext highlighter-rouge">C</code> to produce <code class="language-plaintext highlighter-rouge">ĀBC</code>.</li>
+      <li>We will also need inverters (NOT gates) to create <code class="language-plaintext highlighter-rouge">Ā</code> and <code class="language-plaintext highlighter-rouge">B̄</code> from the original <code class="language-plaintext highlighter-rouge">A</code> and <code class="language-plaintext highlighter-rouge">B</code> inputs.</li>
+    </ul>
+  </li>
+  <li><strong>Combine it all</strong>. Now, we just connect the outputs of our three AND gates to the inputs of our one OR gate.</li>
+</ol>
+
+<figure>
+<img src="/blog/assets/post-assets//images/constructing-logic-circuit.png" alt="constructing-logic-circuit.png" />
+  <figcaption>Constructing a logic circuit from a Boolean expression.</figcaption>
+</figure>
+
+<p>By learning to describe, evaluate, and implement circuits with Boolean algebra, we gain a powerful set of 
+tools to analyze and design any digital system.</p>
+
+
+    
+    
+    
+    
+
+
+    
+    <div class="flex justify-center mt-10 not-prose *:mx-2">
+      
+      
+      <a href="/blog/lower-level/basic-logic-gate"
+  class="flex items-center justify-center  px-4 py-2 text-sm lg:text-base font-medium text-center bg-primary/10 border-primary/20 hover:bg-card border rounded-3xl"
+  >
+  
+  <i class="bi bi-arrow-left mr-2"></i>
+  
+  Prev
+</a>
+
+      
+
+      
+      <a href="/blog/series/digital-system"
+  class="flex items-center justify-center  px-4 py-2 text-sm lg:text-base font-medium text-center bg-primary/10 border-primary/20 hover:bg-card border rounded-3xl"
+  >
+  
+  Series
+</a>
+
+
+      
+
+    </div>
+    
+  </div>
+
+</div>
+
+    </div>
+
+    <section id="contact" class="mt-10 not-prose">
+  <div class="mb-5 text-center not-prose">
+  <h2
+    class="text-2xl lg:text-3xl font-bold mb-3 after:content-[''] after:h-[2px] after:w-10 after:block after:mx-auto after:bg-foreground">
+    Contact Me
+  </h2>
+  
+  <p class="text-xs lg:text-base">Let's connect with me</p>
+  
+</div>
+
+
+  <div class="mb-5 box-border">
+    <div class="bg-card border-primary/10 border-2 p-4 rounded-md shadow-2xl">
+      <div class="flex *:mx-2 justify-center text-center mb-3 py-3 border-b-primary/10 border-b-2">
+        
+
+        <div>
+  <a href="https://github.com/rizkikadafi" target="_blank" class="text-xs lg:text-sm">
+    <i
+      class="bi bi-github text-2xl lg:text-3xl block transition-transform hover:scale-150 duration-100"></i>
+    <span>rizkikadafi</span>
+  </a>
+</div>
+
+
+        
+
+        <div>
+  <a href="mailto:rizkikadafi11@gmail.com" target="_blank" class="text-xs lg:text-sm">
+    <i
+      class="bi bi-envelope text-2xl lg:text-3xl block transition-transform hover:scale-150 duration-100"></i>
+    <span>rizkikadafi11@gmail.com</span>
+  </a>
+</div>
+
+
+        
+
+        <div>
+  <a href="https://www.linkedin.com/in/rizkikadafi" target="_blank" class="text-xs lg:text-sm">
+    <i
+      class="bi bi-linkedin text-2xl lg:text-3xl block transition-transform hover:scale-150 duration-100"></i>
+    <span>rizkikadafi</span>
+  </a>
+</div>
+
+
+        
+      </div>
+      <div class="text-xs lg:text-sm text-center">
+        <p><i class="bi bi-c-circle"></i> 2025 Muhamad Rizki Kadafi. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </div>
+
+
+  <div id="top-btn" class="fixed right-5 bottom-5 hidden cursor-pointer z-50">
+  <i class="bi bi-arrow-up-circle dark:text-white text-4xl"></i>
+</div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+  <script src="/blog/assets/js/toggle_dark.js"></script>
+  <script src="/blog/assets/js/blog-navbar.js"></script>
+  <script src="/blog/assets/js/blog-swiper.js"></script>
+</body>
+
+</html>
