@@ -1,0 +1,103 @@
+---
+import Search from 'astro-pagefind/components/Search.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import { url } from '../lib/url';
+
+const nav = [
+  { name: 'Home', href: url('') },
+  { name: 'Categories', href: url('categories') },
+  { name: 'Tags', href: url('tags') },
+  { name: 'Series', href: url('series') },
+  { name: 'Archives', href: url('archives') },
+];
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-line bg-surface/80 backdrop-blur-xl transition-colors duration-300"
+>
+  <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
+    <a href={url('')} class="group flex items-center gap-2">
+      <span class="grid h-8 w-8 place-items-center rounded-lg bg-accent font-serif text-base font-bold text-surface">
+        K
+      </span>
+      <span class="font-serif text-lg font-semibold tracking-tight">
+        Kadafi<span class="text-accent">’</span>s Blog
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-lg px-3 py-1.5 text-sm text-muted transition hover:text-text"
+        >
+          {item.name}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <button
+        id="search-open"
+        type="button"
+        aria-label="Search"
+        class="grid h-9 w-9 place-items-center rounded-lg border border-line text-muted transition hover:border-accent hover:text-accent"
+      >
+        <i class="bi bi-search"></i>
+      </button>
+
+      <ThemeToggle />
+
+      <button
+        id="menu-open"
+        type="button"
+        aria-label="Open menu"
+        class="grid h-9 w-9 place-items-center rounded-lg border border-line text-muted transition hover:text-text md:hidden"
+      >
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+  </div>
+
+  <div id="search-panel" class="hidden border-t border-line bg-surface px-5 py-4 sm:px-8">
+    <div class="mx-auto max-w-6xl">
+      <Search searchboxOptions={{ 'data-pf-theme': 'dark' }} />
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-line bg-surface px-5 py-3 md:hidden">
+    <nav class="flex flex-col">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-lg px-3 py-2 text-sm text-muted transition hover:bg-card hover:text-text"
+        >
+          {item.name}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const searchOpen = document.getElementById('search-open');
+  const searchPanel = document.getElementById('search-panel');
+  const menuOpen = document.getElementById('menu-open');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (searchOpen && searchPanel) {
+    searchOpen.addEventListener('click', () => {
+      searchPanel.classList.toggle('hidden');
+      const input = searchPanel.querySelector('input');
+      if (!searchPanel.classList.contains('hidden')) {
+        input?.focus();
+      }
+    });
+  }
+
+  if (menuOpen && mobileMenu) {
+    menuOpen.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>

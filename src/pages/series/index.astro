@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import SeriesCard from '../../components/SeriesCard.astro';
+import Alert from '../../components/Alert.astro';
+
+const posts = await getCollection('posts');
+const series = await getCollection('series');
+
+const countFor = (id: string) =>
+  posts.filter((p) => p.data.is_series && p.data.series_title === id).length;
+const used = series.filter((s) => countFor(s.data.id) > 0);
+---
+
+<BaseLayout title="Series" description="Browse all blog series.">
+  <div class="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
+    <SectionHeading title="Blog Series" subtitle="Learn a topic end-to-end" />
+
+    {used.length > 0 ? (
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {used.map((s, i) => (
+          <SeriesCard series={s.data} count={countFor(s.data.id)} delay={(i % 3) * 80} />
+        ))}
+      </div>
+    ) : (
+      <div class="flex justify-center">
+        <Alert type="info" message="No Blog Series Available" />
+      </div>
+    )}
+  </div>
+</BaseLayout>

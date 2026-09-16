@@ -1,0 +1,84 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { url } from '../lib/url';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: string;
+}
+
+const {
+  title,
+  description = 'Kadafi\u2019s Blog — a personal blog sharing notes, thoughts and ideas',
+  ogImage = url('/assets/images/posts/hero1.jpg'),
+  ogType = 'website',
+} = Astro.props;
+
+const siteData = {
+  title: 'Kadafi\u2019s Blog',
+  author: 'Muhamad Rizki Kadafi',
+  description,
+};
+const ogUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL(ogImage, Astro.site);
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title ? `${title} — ${siteData.title}` : siteData.title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={siteData.author} />
+
+    <link rel="icon" type="image/png" href={url('assets/images/favicon.png')} />
+
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={ogUrl} />
+    <meta property="og:site_name" content={siteData.title} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={title} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>
+      (function () {
+        try {
+          if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body class="bg-surface font-sans text-text antialiased transition-colors duration-300">
+    <Navbar />
+
+    <main class="min-h-svh">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

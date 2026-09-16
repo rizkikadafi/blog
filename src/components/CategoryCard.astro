@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { url } from '../lib/url';
+
+interface Props {
+  category: CollectionEntry<'categories'>['data'];
+  count: number;
+  delay?: number;
+}
+
+const { category, count, delay = 0 } = Astro.props;
+const src = url(`assets/images/categories/${category.img}`);
+---
+
+<a
+  href={url(`categories/${category.id}/`)}
+  class="reveal group relative block overflow-hidden rounded-xl border border-line transition duration-300 hover:-translate-y-1 hover:border-accent/60"
+  style={delay ? `animation-delay: ${delay}ms` : undefined}
+>
+  <img src={src} alt={category.name} loading="lazy" class="h-40 w-full object-cover" />
+  <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
+  <div class="absolute inset-x-0 bottom-0 p-4">
+    <h3 class="font-serif text-xl font-semibold text-white">{category.name}</h3>
+    <p class="mt-1 line-clamp-2 text-sm text-white/70">{category.desc}</p>
+    <span class="mt-2 inline-flex items-center gap-1 text-xs font-medium text-accent">
+      {count} {count === 1 ? 'article' : 'articles'}
+      <i class="bi bi-arrow-right transition group-hover:translate-x-1"></i>
+    </span>
+  </div>
+</a>

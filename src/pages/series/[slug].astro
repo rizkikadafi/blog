@@ -1,0 +1,58 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ChapterList from '../../components/ChapterList.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import Alert from '../../components/Alert.astro';
+import { url } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const series = await getCollection('series');
+  return series.map((s) => ({ params: { slug: s.data.id }, props: { seriesId: s.data.id } }));
+}
+
+const { seriesId } = Astro.props;
+
+const seriesEntry = await getEntry('series', seriesId);
+const posts = (await getCollection('posts')).filter(
+  (p) => p.data.is_series && p.data.series_title === seriesId,
+);
+
+const name = seriesEntry?.data.name ?? seriesId;
+const chapters = seriesEntry?.data.chapters;
+---
+
+<BaseLayout title={name} description={`${seriesEntry?.data.desc ?? ''} — blog series.`}>
+  <div class="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8">
+    <SectionHeading title={name} subtitle={seriesEntry?.data.desc} />
+
+    {posts.length > 0 ? (
+      <>
+        <ChapterList posts={posts} chapters={chapters} />
+
+        <div class="mt-10 grid gap-3 sm:grid-cols-2">
+          {posts
+            .sort((a, b) => (a.data.series_order ?? 0) - (b.data.series_order ?? 0))
+            .map((post) => (
+              <a
+                href={url(`blog/${post.id}/`)}
+                class="group flex items-center gap-3 rounded-lg border border-line bg-card px-4 py-3 transition hover:border-accent"
+              >
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent/15 text-sm font-semibold text-accent">
+                  {post.data.series_order}
+                </span>
+                <span class="flex-1 text-sm font-medium transition group-hover:text-accent">
+                  {post.data.title}
+                </span>
+                <i class="bi bi-arrow-right text-muted transition group-hover:text-accent"></i>
+              </a>
+            ))}
+        </div>
+      </>
+    ) : (
+      <div class="flex justify-center">
+        <Alert type="info" message={`No "${name}" posts available yet.`} />
+      </div>
+    )}
+  </div>
+</BaseLayout>

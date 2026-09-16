@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { url } from '../lib/url';
+
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+  chapters?: { name: string; count: number }[];
+}
+
+const { posts, chapters } = Astro.props;
+
+const ordered = [...posts].sort((a, b) => (a.data.series_order ?? 0) - (b.data.series_order ?? 0));
+
+let groups: { name: string; posts: CollectionEntry<'posts'>[] }[] = [];
+
+if (chapters && chapters.length > 0) {
+  let cursor = 0;
+  groups = chapters.map((c) => ({
+    name: c.name,
+    posts: ordered.slice(cursor, (cursor += Math.min(c.count, ordered.length - cursor))),
+  }));
+  const rest = ordered.slice(cursor);
+  if (rest.length > 0) groups.push({ name: 'More', posts: rest });
+} else {
+  groups = [{ name: 'Contents', posts: ordered }];
+}
+---
+
+<div class="overflow-hidden rounded-xl border border-line bg-card">
+  {groups.map((group, gi) => (
+    <div class={gi > 0 ? 'border-t border-line' : ''}>
+      <p class="bg-surface/60 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-accent">
+        {group.name}
+      </p>
+      <ul class="divide-y divide-line">
+        {group.posts.map((post) => (
+          <li>
+            <a
+              href={url(`blog/${post.id}/`)}
+              class="flex items-center gap-3 px-4 py-3 text-sm transition hover:bg-surface"
+            >
+              <span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-accent/15 text-xs font-semibold text-accent">
+                {post.data.series_order}
+              </span>
+              <span class="line-clamp-1">{post.data.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

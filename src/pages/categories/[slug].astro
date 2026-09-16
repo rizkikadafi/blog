@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import Alert from '../../components/Alert.astro';
+import { url } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const categories = await getCollection('categories');
+  return categories.map((cat) => {
+    const catPosts = posts
+      .filter((p) => p.data.categories.includes(cat.data.id))
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    return {
+      params: { slug: cat.data.id },
+      props: { category: cat.data, posts: catPosts, all: categories },
+    };
+  });
+}
+
+const { category, posts, all } = Astro.props;
+---
+
+<BaseLayout title={category.name} description={`Posts in category ${category.name}: ${category.desc}`}>
+  <div class="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
+    <div class="mb-2 flex flex-wrap items-center gap-2">
+      {all.map((c) => (
+        <a
+          href={url(`categories/${c.data.id}/`)}
+          class:list={[
+            'rounded-full border px-3 py-1 text-xs transition',
+            c.data.id === category.id
+              ? 'border-accent bg-accent-soft text-accent'
+              : 'border-line text-muted hover:text-text',
+          ]}
+        >
+          {c.data.name}
+        </a>
+      ))}
+    </div>
+
+    <div class="mb-8 mt-6">
+      <h1 class="font-serif text-3xl font-bold sm:text-4xl">{category.name}</h1>
+      <p class="mt-2 max-w-xl text-muted">{category.desc}</p>
+    </div>
+
+    {posts.length > 0 ? (
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </div>
+    ) : (
+      <div class="flex justify-center">
+        <Alert type="info" message={`No posts in ${category.name} yet.`} />
+      </div>
+    )}
+  </div>
+</BaseLayout>

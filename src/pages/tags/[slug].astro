@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import Alert from '../../components/Alert.astro';
+import { url } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const tags = new Set<string>();
+  for (const p of posts) for (const t of p.data.tags) tags.add(t);
+
+  return [...tags].map((tag) => {
+    const tagPosts = posts
+      .filter((p) => p.data.tags.includes(tag))
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    return { params: { slug: tag }, props: { tag, posts: tagPosts, all: [...tags].sort() } };
+  });
+}
+
+const { tag, posts, all } = Astro.props;
+---
+
+<BaseLayout title={`Tag: ${tag}`} description={`Posts tagged with ${tag}.`}>
+  <div class="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
+    <div class="mb-2 flex flex-wrap items-center gap-2">
+      {all.map((t) => (
+        <a
+          href={url(`tags/${t}/`)}
+          class:list={[
+            'rounded-full border px-3 py-1 text-xs transition',
+            t === tag ? 'border-accent bg-accent-soft text-accent' : 'border-line text-muted hover:text-text',
+          ]}
+        >
+          #{t}
+        </a>
+      ))}
+    </div>
+
+    <div class="mb-8 mt-6">
+      <h1 class="font-serif text-3xl font-bold sm:text-4xl">#{tag}</h1>
+    </div>
+
+    {posts.length > 0 ? (
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </div>
+    ) : (
+      <div class="flex justify-center">
+        <Alert type="info" message={`No posts tagged ${tag} yet.`} />
+      </div>
+    )}
+  </div>
+</BaseLayout>

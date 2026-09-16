@@ -1,0 +1,22 @@
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="Toggle theme"
+  class="grid h-9 w-9 place-items-center rounded-lg border border-line text-muted transition hover:border-accent hover:text-accent"
+>
+  <i class="bi bi-moon-stars text-lg light:hidden"></i>
+  <i class="hidden bi bi-sun text-lg light:block"></i>
+</button>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  toggle?.addEventListener('click', () => {
+    document.documentElement.classList.toggle('light');
+    try {
+      localStorage.setItem(
+        'theme',
+        document.documentElement.classList.contains('light') ? 'light' : 'dark',
+      );
+    } catch (e) {}
+  });
+</script>

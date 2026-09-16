@@ -1,100 +1,127 @@
-# My Personal Blog
+# Kadafi's Blog
 
-## Requirement
-- [Node Js](https://nodejs.org/en/download)
-- [Jekyll](https://jekyllrb.com/docs/installation/)
+Personal blog sharing notes, thoughts and ideas across all kinds of topics, built with **Astro 7 + Tailwind CSS v4**. Deployed via GitHub Actions to `https://rizkikadafi.github.io/blog/`.
 
-## Installation
-- Node Dependencies
+## Tech Stack
+
+- [Astro](https://astro.build) (static site)
+- [Tailwind CSS v4](https://tailwindcss.com) (`@tailwindcss/vite` plugin)
+- [Pagefind](https://pagefind.app) site search (`astro-pagefind`)
+- Markdown content collections with KaTeX math (`remark-math` + `rehype-katex`)
+- `@astrojs/sitemap` for SEO
+
+## Requirements
+
+- Node.js 20+
+
+## Run Locally
+
 ```bash
 npm install
+npm run dev
 ```
-- Gem dependecies
+
+The blog runs under the `/blog` base path → open `http://localhost:4321/blog/`.
+
+## Build & Check
+
 ```bash
-bundle install
+npm run check   # TypeScript + component checks
+npm run build   # outputs to dist/, builds Pagefind index + sitemap
+npm run preview # preview the production build at http://localhost:4321/blog/
 ```
 
-## Run
-```bash
-bundle exec jekyll serve --livereload
+## Project Structure
+
+```
+src/
+├── content.config.ts     # content collections schema (zod)
+├── content/posts/        # blog posts (markdown)
+├── data/
+│   ├── site.yaml         # site metadata (title, author, socials)
+│   ├── categories.yaml   # blog categories
+│   └── series.yaml       # blog series (+ optional chapters)
+├── layouts/BaseLayout.astro  # shared layout (SEO + OG tags, fonts, theme)
+├── components/           # navbar, cards, TOC, series nav, alert, etc.
+├── pages/
+│   ├── index.astro                 # home (hero + category/series galleries + posts)
+│   ├── categories/index.astro      # all categories
+│   ├── categories/[slug].astro     # posts in a category
+│   ├── tags/index.astro            # all tags
+│   ├── tags/[slug].astro           # posts with a tag
+│   ├── series/index.astro          # all series
+│   ├── series/[slug].astro         # series page (chapter list)
+│   ├── blog/[...slug].astro       # individual post (with TOC sidebar)
+│   ├── archives.astro              # posts by year
+│   └── 404.astro
+└── styles/global.css     # Tailwind v4 tokens, prose + KaTeX overrides
+
+public/assets/images/
+├── categories/           # category cover images
+├── series/               # series cover images
+└── posts/                # post images (figures, thumbnails, og image)
 ```
 
-## Structure (root folder)
-- `_data` -  contain data related to blog
-- `_includes` - contain reusble component template
-- `_layouts` - contain page layout
-- `_posts` - contain all posts
-- `assets` - contain assets for blog (css, js, image)
-- `series` - folder for create blog series
-- `index.html` - entry page
-- `archives.html` - archives page
-- `categories.html` - categories page (show all post based on categories)
-- `tags.html` - tags page (show all post based on tags)
-- `404.html` - not found page
+## Adding a Post
 
-## Post
-* Post naming convention
-`YYYY-MM-DD-{title separated by spaces}.md`
-* Post permalink
-    * **title**: specify the title of the post. Leave this field blank if you want the title to match the title in the post file name.
-    * **thumbnail**: specify thumbnail for post (optional). The image must be under `assets/post-assets/images/` folder. Only specify the name of image (not full path).
-    * **categories**: specify the categories of post (separated by spaces if there are multiple categories for post)
-    * **tags**: specify the tags of post (separated by spaces if there are multiple tags for post)
-    * **is_series**: specify if the post is part of a series (true or false)
-    * **series_order**: specify the order of post in the series (number)
-    * **series_title**: which series title this post belongs to (series title is specified in _data/blog-series.toml)
+1. Create a file `src/content/posts/<slug>.md` (no date prefix needed).
+2. Frontmatter fields:
 
-**Example**
-```md
+```yaml
 ---
-title: Digital System
-thumbnail: hero1.jpg
-categories: lower-level
-tags: digital-system analog digital
-is_series: true
-series_order: 1
-series_title: digital-system
+title: "An Introduction to Digital Systems ..."
+description: "One-line summary (used on cards & SEO)"
+date: 2025-01-14
+author: "Muhamad Rizki Kadafi"   # optional, defaults to site author
+categories: [lower-level]          # must exist in data/categories.yaml
+tags: [digital-system, analog, digital]
+is_series: true                    # optional
+series_order: 1                    # optional, order within the series
+series_title: digital-system       # optional, must exist in data/series.yaml
+thumbnail: file.png                # optional, image in public/assets/images/posts/
 ---
 ```
-* Embed post figure image
-```md
-{% include post-image.html image="hero1.jpg" caption="hero image" label="example" %}
 
-You can see an example in {% figref example %}.
-```
-## Blog series
-Step for create a series:
-1. add series in `_data/blog-series.yml`
-```yml
-- name: digital-system
-  desc: Blog Series related digital system 
-  img: digital-system.jpeg
-```
-2. Create folder inside `series` folder with the same name in `_data` and create `index.html` inside.
-**example index.html**
+3. Embed images with plain HTML figures (served from `/blog/assets/images/posts/...`):
+
 ```html
----
-layout: series
-title: Digital System Series
-series_title: digital-system
----
-
-{% assign posts = site.posts | where: "is_series", true | where: "series_title", page.series_title | sort:
-"series_order" %}
-
-{% include link-list-group.html data=posts %}
+<figure>
+  <img src="/blog/assets/images/posts/or-gate.png" alt="..." />
+</figure>
 ```
-to split posts into different chapter, add `chapters` arguments to link-list-group
-```md
-{% include link-list-group.html data=posts chapters="{Chapter name}:{the number of post in this chapter}" %}
-```
-note: each chapter will take posts sequentially.
 
-**example**
-```md
-{% include link-list-group.html data=posts chapters="Introductory Concept:5" %}
-{% include link-list-group.html data=posts chapters="Chapter 1:3" %}
-```
-it will create `Introductory Concept` with 5 posts, with posts that have `series_order` 1-5 in this series.
-And next Chapter will take posts that have `series_order` 6-8 in this series.
+Or use standard markdown images relative to `public/assets/images/posts/`.
 
+4. Math via KaTeX (LaTeX syntax inside `$...$` or `$$...$$`).
+
+## Blog Series (chapters)
+
+`data/series.yaml` supports optional chapters that split the series posts into
+groups. Each chapter is `name: N` where N is the number of consecutive posts
+(starting from the lowest `series_order`), matching the old Jekyll behavior.
+
+```yaml
+- id: digital-system
+  name: Digital System
+  desc: "..."
+  img: digital-system.jpeg
+  chapters:
+    - name: Introductory Concepts
+      count: 1
+    - name: Number System and Codes
+      count: 1
+```
+
+## Deploy
+
+GitHub Actions workflow (`.github/workflows/deploy.yml`) builds the site and
+publishes `dist/` with `withastro/action` → `actions/deploy-pages@v4`.
+The workflow triggers on push to `main` (and manually via workflow_dispatch).
+
+**Prerequisite:** repo Settings → Pages → Source must be set to **GitHub Actions**
+before the first deploy.
+
+## Adding a New Category / Series
+
+- Category: add an entry to `data/categories.yaml` and place a cover image in `public/assets/images/categories/`.
+- Series: add an entry to `data/series.yaml` (optionally with `chapters`) and place a cover image in `public/assets/images/series/`. The series page is generated automatically; a series without posts is hidden from `series/` index.

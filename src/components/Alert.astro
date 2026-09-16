@@ -1,0 +1,21 @@
+---
+interface Props {
+  type?: 'info' | 'warning' | 'danger' | 'success';
+  message: string;
+}
+
+const { type = 'info', message } = Astro.props;
+
+const styles: Record<string, { box: string; icon: string }> = {
+  info: { box: 'border-info/40 bg-info/10 text-text', icon: 'bi-info-circle text-info' },
+  success: { box: 'border-success/40 bg-success/10 text-text', icon: 'bi-check-circle text-success' },
+  warning: { box: 'border-warning/40 bg-warning/10 text-text', icon: 'bi-exclamation-triangle text-warning' },
+  danger: { box: 'border-danger/40 bg-danger/10 text-text', icon: 'bi-x-circle text-danger' },
+};
+const s = styles[type] ?? styles.info;
+---
+
+<div class={`flex items-center gap-3 rounded-lg border p-4 text-sm ${s.box}`} role="alert">
+  <i class={`shrink-0 text-lg bi ${s.icon}`}></i>
+  <span>{message}</span>
+</div>

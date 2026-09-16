@@ -1,0 +1,108 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import PostCard from '../components/PostCard.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import SeriesCard from '../components/SeriesCard.astro';
+import Carousel from '../components/Carousel.astro';
+import Alert from '../components/Alert.astro';
+import { url } from '../lib/url';
+
+const site = (await getEntry('site', 'site'))!.data;
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const categories = await getCollection('categories');
+const series = await getCollection('series');
+
+const countForCategory = (id: string) =>
+  posts.filter((p) => p.data.categories.includes(id)).length;
+const countForSeries = (id: string) =>
+  posts.filter((p) => p.data.is_series && p.data.series_title === id).length;
+---
+
+<BaseLayout title={site.title} description={site.description}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div
+      class="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/10 blur-3xl"
+    ></div>
+    <div class="mx-auto flex w-full max-w-6xl flex-col items-center px-5 py-20 text-center sm:px-8 sm:py-28">
+      <span class="mb-4 inline-flex items-center gap-2 rounded-full border border-line bg-card px-3 py-1 text-xs text-muted">
+        <i class="bi bi-book text-accent"></i>
+        Personal Notes &amp; Thoughts
+      </span>
+      <h1 class="max-w-3xl font-serif text-4xl font-bold leading-tight sm:text-6xl">
+        {site.tagline}
+      </h1>
+      <p class="mt-6 max-w-2xl text-base text-muted sm:text-lg">{site.description}</p>
+      <a
+        href="https://rizkikadafi.github.io/"
+        target="_blank"
+        rel="noopener"
+        class="group mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-surface transition hover:brightness-110"
+      >
+        Want to know about me?
+        <i class="bi bi-arrow-up-right transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8">
+    <div class="flex items-end justify-between">
+      <SectionHeading title="Browse by Category" subtitle="Filter the blog by topic" center={false} />
+      <a href={url('categories/')} class="group mb-8 inline-flex items-center gap-1 text-sm text-accent hover:underline">
+        View all
+        <i class="bi bi-arrow-right transition group-hover:translate-x-1"></i>
+      </a>
+    </div>
+    <Carousel ariaLabel="Categories carousel">
+      {categories.map((cat, i) => (
+        <div class="w-[280px] shrink-0 snap-start sm:w-[320px]">
+          <CategoryCard
+            category={cat.data}
+            count={countForCategory(cat.data.id)}
+            delay={(i % 3) * 80}
+          />
+        </div>
+      ))}
+    </Carousel>
+  </section>
+
+  <!-- Recent Posts -->
+  <section class="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8">
+    <SectionHeading title="Recent Posts" subtitle="The latest articles on the blog" />
+    {posts.length > 0 ? (
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </div>
+    ) : (
+      <div class="flex justify-center">
+        <Alert type="info" message="No Posts Available" />
+      </div>
+    )}
+  </section>
+
+  <!-- Series -->
+  <section class="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8">
+    <div class="flex items-end justify-between">
+      <SectionHeading title="Blog Series" subtitle="Learn a topic from beginning to end" center={false} />
+      <a href={url('series/')} class="group mb-8 inline-flex items-center gap-1 text-sm text-accent hover:underline">
+        View all
+        <i class="bi bi-arrow-right transition group-hover:translate-x-1"></i>
+      </a>
+    </div>
+    <Carousel ariaLabel="Series carousel">
+      {series.map((s, i) => (
+        <div class="w-[280px] shrink-0 snap-start sm:w-[320px]">
+          <SeriesCard series={s.data} count={countForSeries(s.data.id)} delay={(i % 3) * 80} />
+        </div>
+      ))}
+    </Carousel>
+  </section>
+</BaseLayout>

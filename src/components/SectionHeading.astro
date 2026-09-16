@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  center?: boolean;
+}
+
+const { title, subtitle, center = true } = Astro.props;
+---
+
+<div class={center ? 'mb-8 flex flex-col items-center text-center' : 'mb-8'}>
+  <h2
+    class="font-serif text-2xl font-semibold sm:text-3xl"
+  >
+    {title}
+  </h2>
+  <span class="mt-3 h-1 w-12 rounded-full bg-accent"></span>
+  {subtitle && <p class="mt-3 max-w-xl text-sm text-muted">{subtitle}</p>}
+</div>

@@ -1,0 +1,34 @@
+# ============================================================
+# SERIES
+# id  : slug series (dipakai post sebagai series_title)
+# name: nama tampilan (judul series)
+# desc: deskripsi singkat
+# img : gambar di /assets/images/series/
+# ============================================================
+- id: digital-system
+  name: Digital System
+  desc: Blog series related to digital system
+  img: digital-system.jpeg
+  chapters:
+    - name: Introductory Concepts
+      count: 1
+    - name: Number System and Codes
+      count: 1
+    - name: Describing Logic Circuit
+      count: 2
+- id: operating-system
+  name: Operating System
+  desc: Blog series related to operating system
+  img: operating-system.jpeg
+- id: calculus
+  name: Calculus
+  desc: Blog series related to Calculus concepts
+  img: linux.jpeg
+- id: linux
+  name: Linux
+  desc: Blog series related to the use of the Linux operating system
+  img: linux.jpeg
+- id: general
+  name: General
+  desc: Blog series related to general topics and sharing my opinion
+  img: linux.jpeg

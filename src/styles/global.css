@@ -1,0 +1,174 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant light (&:where(.light, .light *));
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Newsreader', 'Playfair Display', Georgia, serif;
+  --font-display: 'Newsreader', 'Playfair Display', Georgia, serif;
+
+  --color-surface: #0c1220;
+  --color-card: #131c2e;
+  --color-line: #1e2d45;
+  --color-muted: #8899b3;
+  --color-text: #dce4f0;
+  --color-accent: #f59e0b;
+  --color-accent-soft: rgba(245, 158, 11, 0.12);
+  --color-accent-hover: rgba(245, 158, 11, 0.22);
+  --color-info: #38bdf8;
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+}
+
+.light {
+  --color-surface: #faf8f5;
+  --color-card: #ffffff;
+  --color-line: #e2ddd5;
+  --color-muted: #6b7280;
+  --color-text: #1a1a1a;
+  --color-accent: #d97706;
+  --color-accent-soft: rgba(217, 119, 6, 0.1);
+  --color-accent-hover: rgba(217, 119, 6, 0.18);
+  --color-info: #0284c7;
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+}
+
+/* prose overrides for article readability */
+.prose {
+  --tw-prose-body: var(--color-text);
+  --tw-prose-headings: var(--color-text);
+  --tw-prose-lead: var(--color-text);
+  --tw-prose-links: var(--color-accent);
+  --tw-prose-bold: var(--color-text);
+  --tw-prose-counters: var(--color-muted);
+  --tw-prose-bullets: var(--color-muted);
+  --tw-prose-hr: var(--color-line);
+  --tw-prose-quotes: var(--color-text);
+  --tw-prose-quote-borders: var(--color-accent);
+  --tw-prose-code: var(--color-accent);
+  --tw-prose-pre-code: var(--color-text);
+  --tw-prose-pre-bg: var(--color-surface);
+  --tw-prose-th-borders: var(--color-line);
+  --tw-prose-td-borders: var(--color-line);
+}
+
+.prose figure {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 48rem;
+}
+
+.prose figure img {
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.prose figure figcaption {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.katex-display {
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+/* carousel: hide default scrollbars */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* carousel indicator dots */
+.carousel-dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: var(--color-line);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+.carousel-dot.active {
+  width: 1.375rem;
+  background: var(--color-accent);
+}
+
+/* reveal animation */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  animation: reveal 0.6s ease both;
+}
+
+/* pagefind overrides */
+:root {
+  --pf-font: var(--font-sans);
+  --pf-input-height: 3rem;
+  --pf-input-font-size: 0.9375rem;
+  --pf-border-radius: 0.75rem;
+  --pf-searchbox-max-width: 100%;
+  --pf-searchbox-dropdown-max-height: 400px;
+}
+
+/* dark theme (default): align Pagefind UI with the editorial palette */
+pagefind-searchbox[data-pf-theme='dark'] {
+  --pf-text: var(--color-text);
+  --pf-text-secondary: var(--color-muted);
+  --pf-text-muted: var(--color-muted);
+  --pf-background: var(--color-card);
+  --pf-border: var(--color-line);
+  --pf-border-focus: var(--color-accent);
+  --pf-hover: var(--color-accent-soft);
+  --pf-mark: var(--color-accent);
+  --pf-outline-focus: var(--color-accent);
+  --pf-scroll-shadow: rgba(0, 0, 0, 0.45);
+  --pf-error-bg: transparent;
+  --pf-error-border: var(--color-danger);
+  --pf-error-text: var(--color-danger);
+  --pf-error-text-secondary: var(--color-danger);
+  --pf-modal-backdrop: rgba(5, 8, 16, 0.7);
+  color-scheme: dark;
+}
+
+/* light theme: Pagefind UI switches back to light tokens inside .light */
+.light pagefind-searchbox[data-pf-theme='dark'] {
+  --pf-text: var(--color-text);
+  --pf-text-secondary: var(--color-muted);
+  --pf-text-muted: var(--color-muted);
+  --pf-background: var(--color-card);
+  --pf-border: var(--color-line);
+  --pf-border-focus: var(--color-accent);
+  --pf-hover: var(--color-accent-soft);
+  --pf-mark: var(--color-accent);
+  --pf-outline-focus: var(--color-accent);
+  --pf-scroll-shadow: rgba(0, 0, 0, 0.1);
+  --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --pf-error-bg: transparent;
+  --pf-error-border: var(--color-danger);
+  --pf-error-text: var(--color-danger);
+  --pf-error-text-secondary: var(--color-danger);
+  --pf-modal-backdrop: rgba(0, 0, 0, 0.35);
+  color-scheme: light;
+}
+
+@media (max-width: 640px) {
+  .pagefind-ui__results {
+    max-height: 60vh;
+  }
+}

@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+import Alert from '../../components/Alert.astro';
+
+const posts = await getCollection('posts');
+const categories = await getCollection('categories');
+
+const countFor = (id: string) => posts.filter((p) => p.data.categories.includes(id)).length;
+---
+
+<BaseLayout title="Categories" description="Browse all blog categories.">
+  <div class="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
+    <SectionHeading title="Blog Categories" subtitle="Explore articles grouped by topic" />
+
+    {categories.length > 0 ? (
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {categories.map((cat, i) => (
+          <CategoryCard category={cat.data} count={countFor(cat.data.id)} delay={(i % 3) * 80} />
+        ))}
+      </div>
+    ) : (
+      <div class="flex justify-center">
+        <Alert type="info" message="No Categories Available" />
+      </div>
+    )}
+  </div>
+</BaseLayout>

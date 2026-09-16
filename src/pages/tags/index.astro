@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import Alert from '../../components/Alert.astro';
+import { url } from '../../lib/url';
+
+const posts = await getCollection('posts');
+
+const tagCounts = new Map<string, number>();
+for (const p of posts) {
+  for (const t of p.data.tags) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+}
+const tags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1]);
+---
+
+<BaseLayout title="Tags" description="Browse all blog tags.">
+  <div class="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8">
+    <SectionHeading title="Blog Tags" subtitle="Topics mentioned across the blog" />
+
+    {tags.length > 0 ? (
+      <div class="flex flex-wrap justify-center gap-3">
+        {tags.map(([tag, count]) => (
+          <a
+            href={url(`tags/${tag}/`)}
+            class="group inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 text-sm transition hover:border-accent hover:text-accent"
+          >
+            <span>#{tag}</span>
+            <span class="rounded-full bg-accent/15 px-2 py-0.5 text-xs font-semibold text-accent">
+              {count}
+            </span>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="flex justify-center">
+        <Alert type="info" message="No Tags Available" />
+      </div>
+    )}
+  </div>
+</BaseLayout>

@@ -1,0 +1,128 @@
+---
+interface Props {
+  gap?: number;
+  ariaLabel?: string;
+}
+
+const { gap = 16, ariaLabel = 'Carousel' } = Astro.props;
+---
+
+<div class="carousel" data-carousel data-gap={gap}>
+  <div
+    data-carousel-inner
+    class="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto outline-none"
+    role="region"
+    aria-label={ariaLabel}
+    tabindex="0"
+  >
+    <slot />
+  </div>
+
+  <div data-carousel-controls class="mt-5 flex items-center justify-center gap-4">
+    <button
+      data-carousel-prev
+      type="button"
+      aria-label="Previous slide"
+      class="grid h-9 w-9 place-items-center rounded-full border border-line text-muted transition hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-30"
+    >
+      <i class="bi bi-chevron-left"></i>
+    </button>
+
+    <div data-carousel-dots class="flex items-center gap-1.5" role="tablist" aria-label="Slides"></div>
+
+    <button
+      data-carousel-next
+      type="button"
+      aria-label="Next slide"
+      class="grid h-9 w-9 place-items-center rounded-full border border-line text-muted transition hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-30"
+    >
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+  function initCarousel(root: HTMLElement) {
+    const inner = root.querySelector<HTMLElement>('[data-carousel-inner]');
+    const controls = root.querySelector<HTMLElement>('[data-carousel-controls]');
+    const dotsWrap = root.querySelector<HTMLElement>('[data-carousel-dots]');
+    const prev = root.querySelector<HTMLButtonElement>('[data-carousel-prev]');
+    const next = root.querySelector<HTMLButtonElement>('[data-carousel-next]');
+    if (!inner || !controls || !dotsWrap || !prev || !next) return;
+
+    const gap = parseInt(root.dataset.gap || '16', 10);
+    const cards = Array.from(inner.children) as HTMLElement[];
+    let dots: HTMLButtonElement[] = [];
+
+    const step = () => (cards[0] ? cards[0].getBoundingClientRect().width + gap : 0);
+    const maxScroll = () => Math.max(0, inner.scrollWidth - inner.clientWidth);
+
+    // Number of snap positions actually reachable by scrolling.
+    const pageCount = () => {
+      const s = step();
+      const max = maxScroll();
+      if (!s || cards.length === 0 || max <= 2) return 1;
+      return Math.min(cards.length, Math.round(max / s) + 1);
+    };
+
+    const buildDots = (count: number) => {
+      dotsWrap.innerHTML = '';
+      dots = [];
+      for (let i = 0; i < count; i++) {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.role = 'tab';
+        d.className = 'carousel-dot';
+        d.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        d.addEventListener('click', () =>
+          inner.scrollTo({ left: i * step(), behavior: 'smooth' }),
+        );
+        dotsWrap.appendChild(d);
+        dots.push(d);
+      }
+    };
+
+    const update = () => {
+      const s = step();
+      const n = pageCount();
+      controls.classList.toggle('hidden', n <= 1);
+      if (n !== dots.length) buildDots(n);
+      if (s <= 0) return;
+
+      const idx = Math.max(0, Math.min(n - 1, Math.round(inner.scrollLeft / s)));
+      dots.forEach((d, i) => {
+        const on = i === idx;
+        d.classList.toggle('active', on);
+        d.setAttribute('aria-selected', String(on));
+      });
+      prev.disabled = inner.scrollLeft <= 2;
+      next.disabled = inner.scrollLeft >= maxScroll() - 2;
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+    };
+
+    inner.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    prev.addEventListener('click', () => inner.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => inner.scrollBy({ left: step(), behavior: 'smooth' }));
+
+    update();
+  }
+
+  const init = () =>
+    document.querySelectorAll<HTMLElement>('[data-carousel]').forEach(initCarousel);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+</script>

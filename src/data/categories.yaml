@@ -1,0 +1,27 @@
+# ============================================================
+# CATEGORIES
+# id  : slug kategori (terdapat juga di frontmatter posts)
+# name: nama tampilan
+# desc: deskripsi singkat
+# img : gambar di /assets/images/categories/
+# ============================================================
+- id: lower-level
+  name: Lower Level
+  desc: Posts related to lower level system in computer
+  img: lower-level.jpeg
+- id: math
+  name: Math
+  desc: Posts related to mathematical concepts in computer science
+  img: math.jpeg
+- id: programming
+  name: Programming
+  desc: Posts related to programming concepts
+  img: programming.jpeg
+- id: web
+  name: Web
+  desc: Posts related to web development
+  img: web.jpeg
+- id: linux
+  name: Linux
+  desc: Posts related to the use of the Linux operating system
+  img: linux.jpeg

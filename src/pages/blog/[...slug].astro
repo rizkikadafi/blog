@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import SeriesNav from '../../components/SeriesNav.astro';
+import TagChip from '../../components/TagChip.astro';
+import { url } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+
+const allPosts = await getCollection('posts');
+const seriesPosts = post.data.is_series
+  ? allPosts.filter(
+      (p) => p.data.is_series && p.data.series_title === post.data.series_title,
+    )
+  : [];
+const date = post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const thumbnail = post.data.thumbnail ? url(`assets/images/posts/${post.data.thumbnail}`) : null;
+---
+
+<BaseLayout title={post.data.title} description={post.data.description} ogType="article">
+  <div class="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8">
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_220px]">
+      <article class="min-w-0">
+        <div class="mb-2 flex flex-wrap gap-2">
+          {post.data.categories.map((cat) => (
+            <a
+              href={url(`categories/${cat}/`)}
+              class="rounded-full border border-accent/40 bg-accent-soft px-3 py-1 text-xs font-medium text-accent"
+            >
+              {cat.replaceAll('-', ' ')}
+            </a>
+          ))}
+        </div>
+
+        <h1 class="font-serif text-3xl font-bold leading-tight sm:text-4xl">
+          {post.data.title}
+        </h1>
+
+        <p class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted">
+          <span>{date}</span>
+          <span aria-hidden="true">·</span>
+          <span>By {post.data.author}</span>
+          {post.data.is_series && (
+            <>
+              <span aria-hidden="true">·</span>
+              <a href={url(`series/${post.data.series_title}/`)} class="text-accent hover:underline">
+                <i class="bi bi-collection mr-1"></i>
+                Part {post.data.series_order} of {seriesPosts.length}
+              </a>
+            </>
+          )}
+        </p>
+
+        {thumbnail && (
+          <img
+            src={thumbnail}
+            alt={post.data.title}
+            class="mt-8 aspect-video w-full rounded-xl border border-line object-cover"
+          />
+        )}
+
+        <div class="prose prose-lg mt-10 max-w-none">
+          <Content />
+        </div>
+
+        <div class="mt-10 border-t border-line pt-6">
+          <TagChip tags={post.data.tags} />
+        </div>
+
+        {seriesPosts.length > 0 && <SeriesNav post={post} seriesPosts={seriesPosts} />}
+      </article>
+
+      <div class="hidden lg:block">
+        <div class="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
+          <TableOfContents headings={headings} />
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
