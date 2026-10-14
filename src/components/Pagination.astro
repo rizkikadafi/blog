@@ -1,0 +1,58 @@
+---
+import { url } from '../lib/url';
+
+interface Props {
+  currentPage: number;
+  lastPage: number;
+}
+
+const { currentPage, lastPage } = Astro.props;
+const href = (n: number) => (n <= 1 ? url('posts') : url(`posts/${n}`));
+const pages = Array.from({ length: lastPage }, (_, i) => i + 1);
+const base =
+  'grid h-9 min-w-9 place-items-center rounded-lg border border-line px-3 text-sm transition';
+---
+
+{lastPage > 1 && (
+  <nav aria-label="Pagination" class="mt-12 flex flex-wrap items-center justify-center gap-2">
+    {currentPage > 1 ? (
+      <a
+        href={href(currentPage - 1)}
+        aria-label="Previous page"
+        class={`${base} text-muted hover:border-accent hover:text-accent`}
+      >
+        <i class="bi bi-chevron-left"></i>
+      </a>
+    ) : (
+      <span aria-hidden="true" class={`${base} cursor-not-allowed text-muted/40`}>
+        <i class="bi bi-chevron-left"></i>
+      </span>
+    )}
+
+    {pages.map((n) =>
+      n === currentPage ? (
+        <span aria-current="page" class={`${base} border-accent bg-accent font-medium text-surface`}>
+          {n}
+        </span>
+      ) : (
+        <a href={href(n)} class={`${base} text-muted hover:border-accent hover:text-accent`}>
+          {n}
+        </a>
+      ),
+    )}
+
+    {currentPage < lastPage ? (
+      <a
+        href={href(currentPage + 1)}
+        aria-label="Next page"
+        class={`${base} text-muted hover:border-accent hover:text-accent`}
+      >
+        <i class="bi bi-chevron-right"></i>
+      </a>
+    ) : (
+      <span aria-hidden="true" class={`${base} cursor-not-allowed text-muted/40`}>
+        <i class="bi bi-chevron-right"></i>
+      </span>
+    )}
+  </nav>
+)}

@@ -17,6 +17,8 @@ const posts = (await getCollection('posts')).sort(
 const categories = await getCollection('categories');
 const series = await getCollection('series');
 
+const recentPosts = posts.slice(0, 6);
+
 const countForCategory = (id: string) =>
   posts.filter((p) => p.data.categories.includes(id)).length;
 const countForSeries = (id: string) =>
@@ -74,10 +76,16 @@ const countForSeries = (id: string) =>
 
   <!-- Recent Posts -->
   <section class="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8">
-    <SectionHeading title="Recent Posts" subtitle="The latest articles on the blog" />
+    <div class="flex items-end justify-between">
+      <SectionHeading title="Recent Posts" subtitle="The latest articles on the blog" center={false} />
+      <a href={url('posts')} class="group mb-8 inline-flex items-center gap-1 text-sm text-accent hover:underline">
+        View all
+        <i class="bi bi-arrow-right transition group-hover:translate-x-1"></i>
+      </a>
+    </div>
     {posts.length > 0 ? (
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
+        {recentPosts.map((post) => (
           <PostCard post={post} />
         ))}
       </div>
