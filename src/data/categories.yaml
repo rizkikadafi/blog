@@ -25,3 +25,7 @@
   name: Linux
   desc: Posts related to the use of the Linux operating system
   img: linux.jpeg
+- id: projects
+  name: Projects
+  desc: Write-ups about projects I build and the problems behind them
+  img: projects.png
