@@ -13,7 +13,7 @@ tags:
   - react
   - supabase
 is_series: false
-thumbnail: shop-management-cover.png
+thumbnail: shop-management-cover.jpeg
 ---
 
 My parents run a small retail shop. It sells staple foods and daily necessities — flour, cooking oil,
@@ -59,7 +59,20 @@ level of comfort with technology that my parents simply don't have — and that'
 them. They've spent decades running a shop successfully without any of this. The tools expect the
 user to adapt to the software; I needed the opposite.
 
-<!-- IMAGE PLACEHOLDER: a rough sketch or photo of the current paper-based workflow (notebook, price notes). -->
+<figure>
+  <img src="/blog/assets/images/posts/price-recording-1.jpeg" alt="price recording 1" />
+  <figcaption>price recording in paper</figcaption>
+</figure>
+
+<figure>
+  <img src="/blog/assets/images/posts/price-recording-2.jpeg" alt="price recording 2" />
+  <figcaption>price recording in book</figcaption>
+</figure>
+
+<figure>
+  <img src="/blog/assets/images/posts/out-of-stock-recording.jpeg" alt="out of stock recording" />
+  <figcaption>out of stock items recording in book</figcaption>
+</figure>
 
 This is the part I keep coming back to. My parents are **not tech-savvy**, and any application that
 ignores that fact is going to fail in the real world, no matter how clean its code is. A screen that
@@ -129,6 +142,26 @@ That module covers:
   shop pays and what it charges.
 
 <!-- IMAGE PLACEHOLDER: screenshot of the product management screen (product list / create form). -->
+
+<figure>
+  <img src="/blog/assets/images/posts/shop-management-list-product.png" alt="product list" />
+  <figcaption>shop management product list</figcaption>
+</figure>
+
+<figure>
+  <img src="/blog/assets/images/posts/shop-management-category.png" alt="product category" />
+  <figcaption>shop management product category</figcaption>
+</figure>
+
+<figure>
+  <img src="/blog/assets/images/posts/shop-management-uom.png" alt="product uom" />
+  <figcaption>shop management product uom</figcaption>
+</figure>
+
+<figure>
+  <img src="/blog/assets/images/posts/shop-management-price-information.png" alt="price information" />
+  <figcaption>shop management product price list</figcaption>
+</figure>
 
 Technically, it's a web app built with Refine core (React) on the front end and Supabase (Postgres, authentication,
 and row-level security) as the backend, with local storage on the device so it keeps working offline
